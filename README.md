@@ -1,7 +1,7 @@
 Socials-Addict
 ==============
 
-An innovative Social network usage tracker 
+An innovative Social network usage tracker.Designed to help decreasing social-networking addiction. 
 
 
 
