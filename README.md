@@ -1,6 +1,10 @@
 Socials-Addict
 ==============
 
+An innovative Social network usage tracker 
+
+
+
 Introduction :
     
      We are all addicted to social network to contact our family, friends,
