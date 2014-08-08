@@ -21,9 +21,9 @@ Features :
      
 Downloads :     
      
-     https://play.google.com/store/apps/details?id=technologysociety.socialsaddict&hl=en
+ https://play.google.com/store/apps/details?id=technologysociety.socialsaddict&hl=en
      
      
 XDA Thread :
 
-     http://forum.xda-developers.com/showthread.php?t=2705080
+ http://forum.xda-developers.com/showthread.php?t=2705080
