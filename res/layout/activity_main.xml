@@ -1,0 +1,655 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#EDEDED" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="749dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0.58" >
+
+                <Switch
+                    android:id="@+id/start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/enable_disable_service"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/twitterimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/facebookimage"
+                    android:layout_below="@+id/facebookimage"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/twitter" />
+
+                <ImageView
+                    android:id="@+id/whatsappimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/twitterimage"
+                    android:layout_below="@+id/twitterimage"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/whatsapp" />
+
+                <ImageView
+                    android:id="@+id/instagramimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/whatsappimage"
+                    android:layout_below="@+id/whatsappimage"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/instagram" />
+
+                <ImageView
+                    android:id="@+id/facebookimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/start"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/facebook" />
+
+                <ImageView
+                    android:id="@+id/tumblrimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/instagramimage"
+                    android:layout_below="@+id/instagramimage"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/tumblr" />
+
+                <TableRow
+                    android:id="@+id/FACEBOOK"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/facebookimage"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="22dp" >
+
+                    <TextView
+                        android:id="@+id/facebook1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/facebook2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/facebook3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/twitter"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/whatsappimage"
+                    android:layout_alignLeft="@+id/FACEBOOK" >
+
+                    <TextView
+                        android:id="@+id/twitter1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/twitter2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/twitter3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/whatsapp"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/instagramimage"
+                    android:layout_alignLeft="@+id/twitter" >
+
+                    <TextView
+                        android:id="@+id/whatsapp1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView08"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/whatsapp2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/whatsapp3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/instagram"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/instagramimage"
+                    android:layout_alignLeft="@+id/whatsapp" >
+
+                    <TextView
+                        android:id="@+id/instagram1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/instagram2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/instagram3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tumblr"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tumblrimage"
+                    android:layout_alignLeft="@+id/instagram" >
+
+                    <TextView
+                        android:id="@+id/tumblr1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/tumblr2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/TextView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/tumblr3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TextView
+                    android:id="@+id/facebooktext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/twitterimage"
+                    android:layout_marginLeft="14dp"
+                    android:layout_toRightOf="@+id/facebookimage"
+                    android:text="Facebook"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/twittertext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/facebooktext"
+                    android:layout_alignTop="@+id/twitter"
+                    android:text="Twitter"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/whatsapptext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/instagramimage"
+                    android:layout_alignLeft="@+id/twittertext"
+                    android:text="WhatsApp"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/instagramtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/tumblrimage"
+                    android:layout_alignLeft="@+id/whatsapptext"
+                    android:text="instagram"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/tumblrtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/instagramtext"
+                    android:layout_alignTop="@+id/tumblr"
+                    android:text="Tumblr"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <ImageView
+                    android:id="@+id/kikimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tumblrimage"
+                    android:layout_marginTop="15dp"
+                    android:layout_toLeftOf="@+id/facebooktext"
+                    android:src="@drawable/kik" />
+
+                <TextView
+                    android:id="@+id/kiktext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/kikimage"
+                    android:layout_alignLeft="@+id/tumblrtext"
+                    android:text="Kik"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/bbmtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/bbmimage"
+                    android:layout_alignLeft="@+id/kiktext"
+                    android:text="BBM"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <ImageView
+                    android:id="@+id/askimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/bbmimage"
+                    android:layout_below="@+id/bbmimage"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ask" />
+
+                <TextView
+                    android:id="@+id/asktext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/askimage"
+                    android:layout_alignLeft="@+id/bbmtext"
+                    android:text="Ask.fm"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TableRow
+                    android:id="@+id/kik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/bbmimage"
+                    android:layout_alignLeft="@+id/tumblr" >
+
+                    <TextView
+                        android:id="@+id/kik1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/kik2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/kik3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/bbm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/kik"
+                    android:layout_alignTop="@+id/bbmtext" >
+
+                    <TextView
+                        android:id="@+id/bbm1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/bbm2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/bbm3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/ask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/bbm"
+                    android:layout_alignTop="@+id/asktext" >
+
+                    <TextView
+                        android:id="@+id/ask1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/ask2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/ask3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <ImageView
+                    android:id="@+id/bbmimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/kikimage"
+                    android:layout_marginTop="23dp"
+                    android:layout_toLeftOf="@+id/facebooktext"
+                    android:src="@drawable/bbm" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/start"
+                    android:layout_marginTop="10dp"
+                    android:background="#336699"
+                    android:text=" Your Usage"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/askimage"
+                    android:layout_marginTop="15dp"
+                    android:background="#336699"
+                    android:text=" Social-o-meter"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+                <TableRow
+                    android:id="@+id/tableRow4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/askimage"
+                    android:layout_below="@+id/tableRow5"
+                    android:layout_marginTop="24dp" >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="11dp"
+                        android:text="Total apps time  :   "
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="     Hours"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView11"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="19dp" >
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="19dp"
+                        android:text="Addiction State :     "
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Low"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#32CD32" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/ask"
+                    android:layout_below="@+id/ask"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/servicehour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/servicemin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/servicesec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </TableRow>
+            </RelativeLayout>
+        </ScrollView>
+    </TableRow>
+
+</TableLayout>

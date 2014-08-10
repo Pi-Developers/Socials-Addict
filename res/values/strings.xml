@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Socials Addict</string>
+    <string name="action_settings">Settings</string>
+    <string name="about">      Socials Addict 
+        \n
+        \nThe innovative way to track your Social networks usage
+        
+\n
+\n
+V3.0 Changlog:
+\n
+•Re-Defined The whole app
+\n
+•bug fixes
+\n
+•Social-o-meter
+\n
+•Total consupmtion meter
+\n
+•More battery and ram friendly
+\n
+•App overall size decreased a lot
+\n
+•layout refining
+\n
+•lightened app wieght
+\n
+
+
+\n
+For updates and bug report :
+\n
+
+Visit XDA thread 
+</string>
+    <string name="enable_disable_service">Enable/Disable Service</string>
+    <string name="title_activity_setting">Setting</string>
+    <string name="pi">
+Pi Developers
+\nCreative is our middle name</string>
+    
+</resources>
