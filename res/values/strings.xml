@@ -3,42 +3,52 @@
 
     <string name="app_name">Socials Addict</string>
     <string name="action_settings">Settings</string>
-    <string name="about">      Socials Addict 
-        \n
-        \nThe innovative way to track your Social networks usage
+    <string name="about">
+Socials Addict 
+\n
+\nThe innovative way to track your Social networks usage and cut your addiction
         
 \n
 \n
-V3.0 Changlog:
-\n
-•Re-Defined The whole app
-\n
-•bug fixes
-\n
-•Social-o-meter
-\n
-•Total consupmtion meter
-\n
-•More battery and ram friendly
-\n
-•App overall size decreased a lot
-\n
-•layout refining
-\n
-•lightened app wieght
-\n
-
+V6.0 Changlog:
+\n\n-Updated to Material Design
+\n-new Icons
+\n-New logo
+\n-Changed timers dependcy to service
+\n-Fixed force close
+\n-More accurate timers
+\n-Added boot reciver
+\n-Re-coded most of the app from scratch
+\n-Tablet support in design
+\n-Bug fixes and stability improvement
+\n-Actions in notifications
+\n-Show your usage report directly from any app through notifications
 
 \n
-For updates and bug report :
-\n
 
-Visit XDA thread 
 </string>
     <string name="enable_disable_service">Enable/Disable Service</string>
     <string name="title_activity_setting">Setting</string>
     <string name="pi">
 Pi Developers
-\nCreative is our middle name</string>
+\nCreativity is our middle name.
+\n\nWe are team of young developers trying to indrotude new ideas to android users and make them use the most of there phones.
+\n\nOur goal is to provide same experince on all devices possible, we support all major android versions (3.3.x - 5.x)
+\n\nTeam members:
+\n\n-Mohamed Rashad
+\n-Mahmoud Saleh
+\n-Ahmad Sameh
+\n-Mostafa Samy
+\n-Mohamed Ashraf
+\n-Yassmin Gouda
+\n-Mahmoud El-Tarouty
+\n-Mostafa Amr
+\n-Israa Shams
+\n-Robin (AndroidFire)
+\n\n\nCheck our Blog "Pidevelopers.blogspot.com"
+\nOR
+\nFollow us on Twitter @Pi_Developers
+
+</string>
     
 </resources>

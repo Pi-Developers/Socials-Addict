@@ -1,64 +1,81 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-     >
+    android:fitsSystemWindows="false" >
 
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#f5f5f5" >
 
-        <ScrollView
-            android:id="@+id/scrollView1"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="#FFFFFF"
+                android:background="@drawable/shape"
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="877dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#336699"
-                    android:text="  General"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:id="@+id/bbmtext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:background="#01579b"
+                    android:gravity="left|center"
+                    android:text=" Clear options"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#f5f5f5" />
 
                 <Button
-                    android:id="@+id/aboutapp"
+                    android:id="@+id/clear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:background="#FFFFFF"
-                    android:gravity="fill|fill_horizontal"
-                    android:text=" About Socials Addict"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/pi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/selector"
                     android:gravity="fill|left"
-                    android:text=" About Pi developers"
+                    android:text=" Clear all results"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/TextView01"
-                    android:layout_width="783dp"
+                    android:id="@+id/bbmtext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:background="#01579b"
+                    android:gravity="left|center"
+                    android:text=" Miscellaneous options"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#f5f5f5" />
+
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/never"
-                    android:background="#336699"
-                    android:text="  Switch"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#f5f5f5"
+                    android:checked="true"
+                    android:text=" Start service on boot"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#f5f5f5"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#01579b"
+                    android:gravity="left|center"
+                    android:text=" Switch"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#f5f5f5" />
 
                 <CheckBox
                     android:id="@+id/facebookbox"
@@ -67,7 +84,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/TextView01"
                     android:checked="true"
-                    android:text="Activate Facebook"
+                    android:text="Facebook"
                     android:textSize="20sp" />
 
                 <CheckBox
@@ -77,7 +94,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/facebookbox"
                     android:checked="true"
-                    android:text="Activate Twitter"
+                    android:text="Twitter"
                     android:textSize="20sp" />
 
                 <CheckBox
@@ -87,7 +104,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/twitterbox"
                     android:checked="true"
-                    android:text="Activate Instagram"
+                    android:text="Instagram"
                     android:textSize="20sp" />
 
                 <CheckBox
@@ -95,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Activate Ask.fm"
+                    android:text="Ask.fm"
                     android:textSize="20sp" />
 
                 <CheckBox
@@ -103,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Activate BBM"
+                    android:text="BBM"
                     android:textSize="20sp" />
 
                 <CheckBox
@@ -113,7 +130,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/instagrambox"
                     android:checked="true"
-                    android:text="Activate tumblr"
+                    android:text="tumblr"
                     android:textSize="20sp" />
 
                 <CheckBox
@@ -121,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Activate Kik"
+                    android:text="Kik"
                     android:textSize="20sp" />
 
                 <CheckBox
@@ -131,58 +148,47 @@
                     android:layout_alignRight="@+id/instagrambox"
                     android:layout_below="@+id/tumblrbox"
                     android:checked="true"
-                    android:text="Activate Whatsapp"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/bbmtext"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:background="#336699"
-                    android:text="  Clear options"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <Button
-                    android:id="@+id/clear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:background="#FFFFFF"
-                    android:gravity="fill|left"
-                    android:text=" Clear all results"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/textView4tgt"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:background="#336699"
-                    android:text="  Spread the word"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <Button
-                    android:id="@+id/shareapp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:background="#FFFFFF"
-                    android:gravity="fill|left"
-                    android:text=" liked this app ? Share it"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/web"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:background="#FFFFFF"
-                    android:gravity="fill|left"
-                    android:text=" Vist Our Website"
+                    android:text="Whatsapp"
                     android:textSize="20sp" />
             </LinearLayout>
-        </ScrollView>
-    </TableRow>
 
-</TableLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/shape"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="#01579b"
+                    android:gravity="left|center"
+                    android:text=" About"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#f5f5f5" />
+
+                <Button
+                    android:id="@+id/aboutapp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector"
+                    android:gravity="fill|fill_horizontal"
+                    android:text="  About Socials Addict"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/pi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector"
+                    android:gravity="fill|left"
+                    android:text="  About Pi developers"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

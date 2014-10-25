@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="technologysociety.socialsaddict"
-    android:versionCode="5"
-    android:versionName="5.0" >
+    package="pidevs.socialsaddict"
+    android:versionCode="6"
+    android:versionName="6.0" >
 
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:launchMode="singleTask"
         android:theme="@style/Theme.AppCompat.Light" >
+        
         <activity
-            android:name="technologysociety.socialsaddict.MainActivity"
+            android:name="pidevs.socialsaddict.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
+            android:logo="@drawable/ic_launcher"
+            android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Light" >
-            
-               
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,38 +30,36 @@
             </intent-filter>
         </activity>
 
-       
+        <receiver android:name=".close" />
+        <receiver android:name=".settinggg" />
+        <receiver android:name=".report" />
 
         <service
-            android:name="technologysociety.socialsaddict.ServiceSocial"
+            android:name="pidevs.socialsaddict.ServiceSocial"
             android:icon="@drawable/icon"
             android:label="@string/app_name"
             android:launchMode="singleTask" >
         </service>
-        
-        <service
-            android:name="technologysociety.socialsaddict.NotifyService"
-            android:icon="@drawable/icon"
-            android:label="@string/app_name"
-            android:launchMode="singleTask" >
-        </service>
-
+   
+    
         <activity
-            android:name="technologysociety.socialsaddict.SettingsActivity"
-            android:label="Settings"
-            android:theme="@style/AppTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="technologysociety.socialsaddict.MainActivity" />
-        </activity>
-        <activity
-            android:name="technologysociety.socialsaddict.Setting"
+            android:name="pidevs.socialsaddict.Setting"
             android:label="@string/title_activity_setting" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="technologysociety.socialsaddict.MainActivity" />
+                android:value="pidevs.socialsaddict.MainActivity" />
         </activity>
 
+        <receiver
+            android:name="pidevs.socialsaddict.ServiceStarter"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        
     </application>
+  
 
 </manifest>
