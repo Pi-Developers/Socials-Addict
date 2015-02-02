@@ -1,5 +1,8 @@
 package pidevs.socialsaddict;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -10,19 +13,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import android.util.Log;
-import android.widget.Toast;
 
 public class ServiceSocial extends Service {
 
-	static String packageName;
 	private Handler mainhandler;
 	private Handler customHandlerfacebook = new Handler();
 	private Handler customHandlertwitter = new Handler();
@@ -32,24 +31,32 @@ public class ServiceSocial extends Service {
 	private Handler customHandlerbbm = new Handler();
 	private Handler customHandlerkik = new Handler();
 	private Handler customHandlerask = new Handler();
-	Boolean facebook, twitter, tumblr, whatsapp, instagram, kik, bbm, ask;
-	float totalsec, totalmin, totalhour, totalall;
-	 SharedPreferences spf;
-	int f, t, tu, w, i, k, b, a, total;
+	private Handler customHandlersnap = new Handler();
+	private Handler customHandlerkikm = new Handler();
+
+	Boolean facebook, twitter, tumblr, whatsapp, instagram, kik, bbm, ask,kikm, snapchatt;
+	double total, totalsec, totalmin, totalall, totalall1, totalall2;
+	SharedPreferences spf;
+	int f, t, tu, w, i, k, b, a, s, km;
+	int x = 60;
+	int y = 3600;
 	double addict;
+
 	public static int facebooktemp1, facebooktemp2, facebooktemp3,
 			twittertemp1, twittertemp2, twittertemp3, instagramtemp1,
 			instagramtemp2, instagramtemp3, whatsapptemp1, whatsapptemp2,
 			whatsapptemp3, tumblrtemp1, tumblrtemp2, tumblrtemp3, kiktemp1,
 			kiktemp2, kiktemp3, asktemp1, asktemp3, asktemp2, bbmtemp1,
-			bbmtemp2, bbmtemp3, servicetemp1, servicetemp2, servicetemp3;
+			bbmtemp2, bbmtemp3, servicetemp1, servicetemp2, servicetemp3,
+			kikm1, kikm2, kikm3, snap1, snap2, snap3;
 
-	String fbcheck, whatsappcheck, tumblrcheck, instacheck, twcheck, askcheck,
-			bbmcheck, kikcheck, starti, fb1, fb2, fb3, whats1, whats2, whats3,
-			twittr1, twittr2, twittr3, kiki1, kiki2, kiki3, tmblr1, tmblr2,
-			tmblr3, ask1, ask2, ask3, bbm1, bbm2, bbm3, insta1, insta2, insta3;
-
-	;
+	public static String fbcheck, whatsappcheck, tumblrcheck, instacheck,
+			twcheck, askcheck, bbmcheck, kikcheck, starti, fb1, fb2, fb3,
+			whats1, whats2, whats3, twittr1, twittr2, twittr3, kiki1, kiki2,
+			kiki3, tmblr1, tmblr2, tmblr3, ask1, ask2, ask3, bbm1, bbm2, bbm3,
+			insta1, insta2, insta3, ser1, ser2, ser3, packageName, kikmsec,
+			kikmhour, kikmmin, snaphour, snapmin, snapsec, snapcheck,
+			kikmcheck,not,clear;
 
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -57,7 +64,6 @@ public class ServiceSocial extends Service {
 	}
 
 	public void load() {
-
 
 		fbcheck = spf.getString("facebook", "true");
 		kikcheck = spf.getString("kik", "true");
@@ -67,6 +73,13 @@ public class ServiceSocial extends Service {
 		instacheck = spf.getString("instagram", "true");
 		tumblrcheck = spf.getString("tumblr", "true");
 		whatsappcheck = spf.getString("whatsapp", "true");
+		snapcheck = spf.getString("snapchat", "true");
+		kikmcheck = spf.getString("kikm", "true");
+
+		ser1 = spf.getString("servicehour", "0");
+		ser2 = spf.getString("servicemin", "0");
+		ser3 = spf.getString("servicesec", "0");
+
 		starti = spf.getString("start", "false");
 
 		fb1 = spf.getString("facebooksec", "0");
@@ -101,6 +114,14 @@ public class ServiceSocial extends Service {
 		kiki2 = spf.getString("kikmin", "0");
 		kiki3 = spf.getString("kikhour", "0");
 
+		kikmsec = spf.getString("kikmsec", "0");
+		kikmhour = spf.getString("kikhour", "0");
+		kikmmin = spf.getString("kikmin", "0");
+
+		snaphour = spf.getString("snaphour", "0");
+		snapmin = spf.getString("snapmin", "0");
+		snapsec = spf.getString("snapsec", "0");
+
 		facebooktemp1 = Integer.parseInt(fb3);
 		facebooktemp2 = Integer.parseInt(fb2);
 		facebooktemp3 = Integer.parseInt(fb1);
@@ -126,16 +147,40 @@ public class ServiceSocial extends Service {
 		kiktemp2 = Integer.parseInt(kiki2);
 		kiktemp3 = Integer.parseInt(kiki1);
 
+		kikm1 = Integer.parseInt(kikmhour);
+		kikm2 = Integer.parseInt(kikmmin);
+		kikm3 = Integer.parseInt(kikmsec);
+
+		snap1 = Integer.parseInt(snaphour);
+		snap2 = Integer.parseInt(snapmin);
+		snap3 = Integer.parseInt(snapsec);
+
+		servicetemp3 = Integer.parseInt(ser3);
+		servicetemp2 = Integer.parseInt(ser2);
+		servicetemp1 = Integer.parseInt(ser1);
+		
+		
 	}
 
 	// On Creating Service
 	@Override
 	public void onCreate() {
+		spf = PreferenceManager.getDefaultSharedPreferences(this);
 
-		showNotification();
+		not = spf.getString("not", "false");
+		clear = spf.getString("clear", "false");
 		
-		Toast.makeText(getApplicationContext(), "Socials Addict started", Toast.LENGTH_SHORT).show();
-
+		if (not.isEmpty()) {     save("not", "false");	}
+		
+		if (clear.isEmpty()) {  
+			save("clear", "false"); 
+			
+			}
+		
+		
+		if(!not.equals("true")){   showNotification();    }
+		
+		
 	}
 
 	@SuppressLint("HandlerLeak")
@@ -145,14 +190,8 @@ public class ServiceSocial extends Service {
 
 		super.onStartCommand(intent, flags, startId);
 
-		try {
-
-			load();
-
-		} catch (NullPointerException nullPointerException) {
-
-		}
-
+		// try { load(); } catch (NullPointerException nullPointerException) {}
+	
 		mainhandler = new Handler() {
 
 			@Override
@@ -161,7 +200,83 @@ public class ServiceSocial extends Service {
 
 				try {
 
-					total = (int) (facebooktemp1 + twittertemp1 + whatsapptemp1 + instagramtemp1 + tumblrtemp1 + kiktemp1 + bbmtemp1 + asktemp1);
+					if(clear.equals("true")){
+					Calendar c = Calendar.getInstance();
+					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+					String strDate = sdf.format(c.getTime());
+					
+					if(strDate.equals("00:00:00")){
+						
+
+						save("facebooksec", "0");
+						save("facebookmin", "0");
+						save("facebookhour", "0");
+
+						save("twittersec", "0");
+						save("twittermin", "0");
+						save("twitterhour", "0");
+
+						save("whatsappsec", "0");
+						save("whatsappmin", "0");
+						save("whatsapphour", "0");
+
+						save("tumblrsec", "0");
+						save("tumblrmin", "0");
+						save("tumblrhour", "0");
+
+						save("instagramsec", "0");
+						save("instagrammin", "0");
+						save("instagramhour", "0");
+				
+						save("asksec", "0");
+						save("askmin", "0");
+						save("askhour", "0");
+
+						save("bbmsec", "0");
+						save("bbmmin", "0");
+						save("bbmhour", "0");
+
+						save("kiksec", "0");
+						save("kikmin", "0");
+						save("kikhour", "0");
+
+						save("snaphour", "0");
+						save("snapsec", "0");
+						save("snapmin", "0");
+						
+						save("kikmmin", "0");
+						save("kikmsec", "0");
+						save("kikmhour", "0");
+					
+						
+						save("servicesec", "0");
+						save("servicemin", "0");
+						save("servicehour", "0");
+
+						save("state", "low");
+						save("total", "0");
+
+					}
+					}
+					
+					load();
+
+					totalmin = (double) (facebooktemp2 + twittertemp2
+							+ whatsapptemp2 + instagramtemp2 + tumblrtemp2
+							+ kiktemp2 + bbmtemp2 + asktemp2+kikm2+snap2);
+
+					totalsec = (double) (facebooktemp3 + twittertemp3
+							+ whatsapptemp3 + instagramtemp3 + tumblrtemp3
+							+ kiktemp3 + bbmtemp3 + asktemp3+kikm3+snap3);
+
+					totalall1 = ((double) totalmin / (double) x);
+					totalall2 = ((double) totalsec / (double) y);
+
+					totalall = (double) (totalall1 + totalall2);
+
+					total = (double) (facebooktemp1 + twittertemp1
+							+ whatsapptemp1 + instagramtemp1 + tumblrtemp1
+							+ kiktemp1 + bbmtemp1 + asktemp1 + totalall+kikm1+snap1);
 
 					save("total", String.valueOf(total));
 
@@ -172,6 +287,7 @@ public class ServiceSocial extends Service {
 						servicetemp2 += 1;
 
 					}
+
 					if (servicetemp2 >= 60) {
 						servicetemp2 = 00;
 						servicetemp1 += 1;
@@ -180,24 +296,15 @@ public class ServiceSocial extends Service {
 
 					save("servicesec", String.valueOf(servicetemp3));
 					save("servicemin", String.valueOf(servicetemp2));
-					save("servicehour", String.valueOf(servicetemp3));
+					save("servicehour", String.valueOf(servicetemp1));
 
-					totalall = (float) (servicetemp3);
+					addict = ((double) total / (double) servicetemp1);
 
-					addict = (total / totalall);
-					
+
 				} catch (NullPointerException nullPointerException) {
-
-					
-					
-					
-					
-					
-					
-					
 				}
 
-				if (totalhour > 1) {
+				if (servicetemp1 > 4) {
 
 					if (addict < 0.1) {
 
@@ -211,37 +318,27 @@ public class ServiceSocial extends Service {
 
 						} else {
 
-							if (addict < 0.45 && addict > 0.3) {
+							if (addict < 0.3 && addict > 0.2) {
 
 								save("state", "attention");
 
-								Not3();
-
 							} else {
 
-								if (addict < 0.55 && addict > 0.45) {
+								if (addict < 0.5 && addict > 0.4) {
 
 									save("state", "addicted");
 
-									Not4();
-
 								} else {
 
-									if (addict > 0.7) {
+									if (addict > 0.6) {
 
 										save("state", "danger");
-
-										Not5();
 
 									}
 								}
 							}
 						}
 					}
-				} else {
-
-					save("state", "low");
-
 				}
 
 				ActivityManager am = (ActivityManager) getApplicationContext()
@@ -252,8 +349,20 @@ public class ServiceSocial extends Service {
 				if (starti.equals("true")) {
 
 					if (fbcheck.equals("true")) {
+
 						if (packageName.equals("com.facebook.katana")
-								|| packageName.equals("com.facebook.orca")) {
+								|| packageName.equals("com.facebook.orca")
+								|| packageName.equals("app.fastfacebook.com")
+								|| packageName
+										.equals("com.rapid.facebook.magicdroid")
+								|| packageName.equals("com.androdb.fastlitefb")
+								|| packageName.equals("com.abewy.klyph_beta")
+								|| packageName
+										.equals("uk.co.senab.blueNotifyFree")
+								|| packageName
+										.equals("com.platinumapps.facedroid")
+								|| packageName.equals("com.spatiolabs.spatio")
+								|| packageName.equals("com.for_wd.streampro")) {
 
 							if (f == 1) {
 
@@ -277,10 +386,28 @@ public class ServiceSocial extends Service {
 								f = 2;
 							}
 						}
+					} else {
+
+						if (f == 1) {
+
+							facebook = false;
+
+							customHandlerfacebook
+									.removeCallbacks(updateTimerThreadfacebook);
+							f = 2;
+						}
+
 					}
 
 					if (twcheck.equals("true")) {
-						if (packageName.equals("com.twitter.android")) {
+						if (packageName.equals("com.twitter.android")
+								|| packageName.equals("com.levelup.touiteur")
+								|| packageName
+										.equals("com.handmark.tweetcaster")
+								|| packageName
+										.equals("com.hootsuite.droid.full")
+								|| packageName.equals("com.echofon")
+								|| packageName.equals("org.mariotaku.twidere")) {
 
 							if (t == 1) {
 
@@ -300,6 +427,15 @@ public class ServiceSocial extends Service {
 										.removeCallbacks(updateTimerThreadtwitter);
 								t = 2;
 							}
+						}
+					} else {
+						if (t == 1) {
+
+							twitter = false;
+
+							customHandlertwitter
+									.removeCallbacks(updateTimerThreadtwitter);
+							t = 2;
 						}
 					}
 
@@ -328,6 +464,15 @@ public class ServiceSocial extends Service {
 								b = 2;
 							}
 						}
+					} else {
+						if (b == 1) {
+
+							bbm = false;
+
+							customHandlerbbm
+									.removeCallbacks(updateTimerThreadbbm);
+							b = 2;
+						}
 					}
 
 					if (askcheck.equals("true")) {
@@ -352,10 +497,21 @@ public class ServiceSocial extends Service {
 								a = 2;
 							}
 						}
+					} else {
+						if (a == 1) {
+
+							ask = false;
+
+							customHandlerask
+									.removeCallbacks(updateTimerThreadask);
+							a = 2;
+						}
 					}
 
 					if (kikcheck.equals("true")) {
-						if (packageName.equals("kik.android")) {
+						if (packageName.equals("com.google.android.apps.plus")
+								|| packageName
+										.equals("com.google.android.talk")) {
 
 							if (k == 1) {
 
@@ -375,6 +531,15 @@ public class ServiceSocial extends Service {
 										.removeCallbacks(updateTimerThreadkik);
 								k = 2;
 							}
+						}
+					} else {
+						if (k == 1) {
+
+							kik = false;
+
+							customHandlerkik
+									.removeCallbacks(updateTimerThreadkik);
+							k = 2;
 						}
 					}
 
@@ -404,6 +569,15 @@ public class ServiceSocial extends Service {
 								w = 2;
 							}
 						}
+					} else {
+						if (w == 1) {
+
+							whatsapp = false;
+
+							customHandlerwhatsapp
+									.removeCallbacks(updateTimerThreadwhatsapp);
+							w = 2;
+						}
 					}
 
 					if (tumblrcheck.equalsIgnoreCase("true")) {
@@ -428,7 +602,100 @@ public class ServiceSocial extends Service {
 								tu = 2;
 							}
 						}
+					} else {
+						if (tu == 1) {
+
+							tumblr = false;
+
+							customHandlertumblr
+									.removeCallbacks(updateTimerThreadtumblr);
+							tu = 2;
+						}
 					}
+
+					// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+					if (kikmcheck.equals("true")) {
+
+						if (packageName.equals("kik.android")) {
+
+							if (km == 1) {
+
+							} else {
+
+								km = 1;
+								kikm = true;
+								customHandlerkikm.postDelayed(updateTimerThreadkikm, 0);
+							}
+
+						} else {
+
+							if (km == 1) {
+
+								kikm = false;
+								customHandlerkikm.removeCallbacks(updateTimerThreadkikm);
+								k = 2;
+								System.gc();
+							}
+						}
+					} else {
+
+						if (km == 1) {
+
+							kikm = false;
+							customHandlerkikm.removeCallbacks(updateTimerThreadkikm);
+							km = 2;
+							System.gc();
+
+						}
+
+					}
+
+					// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+					if (snapcheck.equals("true")) {
+
+						if (packageName.equals("com.snapchat.android")) {
+
+							if (s == 1) {
+
+							} else {
+
+								s = 1;
+								snapchatt = true;
+
+								customHandlersnap.postDelayed(
+										updateTimerThreadsnap, 0);
+							}
+
+						} else {
+
+							if (s == 1) {
+
+								snapchatt = false;
+
+								customHandlersnap
+										.removeCallbacks(updateTimerThreadsnap);
+								s = 2;
+								System.gc();
+
+							}
+						}
+					} else {
+
+						if (s == 1) {
+
+							snapchatt = false;
+
+							customHandlersnap
+									.removeCallbacks(updateTimerThreadsnap);
+							s = 2;
+							System.gc();
+
+						}
+
+					}
+					// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 					if (instacheck.equals("true")) {
 						if (packageName.equals("com.instagram.android")) {
@@ -451,6 +718,15 @@ public class ServiceSocial extends Service {
 										.removeCallbacks(updateTimerThreadinstagram);
 								i = 2;
 							}
+						}
+					} else {
+						if (i == 1) {
+
+							instagram = false;
+
+							customHandlerinstagram
+									.removeCallbacks(updateTimerThreadinstagram);
+							i = 2;
 						}
 					}
 
@@ -507,12 +783,12 @@ public class ServiceSocial extends Service {
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 				this);
 		mBuilder.setContentTitle("Socials Addict");
-		mBuilder.setContentText("Monitroring Usage..");
+		mBuilder.setContentText("Monitoring Usage..");
 		mBuilder.setTicker("Socials Addict");
 		mBuilder.setSmallIcon(R.drawable.ic_launcher);
 		mBuilder.addAction(0, "Stop service", pendingIntentCancel);
 		mBuilder.addAction(0, "Setting", pendingIntentCancel1);
-		mBuilder.addAction(0, "Report", pendingIntentCancel2);
+		mBuilder.addAction(0, "Usage", pendingIntentCancel2);
 
 		mBuilder.setOngoing(true);
 
@@ -567,7 +843,6 @@ public class ServiceSocial extends Service {
 					facebooktemp1 += 1;
 				}
 
-				Log.d("hey", String.valueOf(twittertemp3));
 
 				save("facebooksec", String.valueOf(facebooktemp3));
 				save("facebookmin", String.valueOf(facebooktemp2));
@@ -606,7 +881,6 @@ public class ServiceSocial extends Service {
 
 				}
 
-				Log.d("hey", String.valueOf(twittertemp3));
 
 				save("twittersec", String.valueOf(twittertemp3));
 				save("twittermin", String.valueOf(twittertemp2));
@@ -632,7 +906,6 @@ public class ServiceSocial extends Service {
 			if (whatsapp = true) {
 
 				whatsapptemp3++;
-				Log.d("hey", String.valueOf(whatsapptemp3));
 
 				if (whatsapptemp3 >= 60) {
 					whatsapptemp3 = 0;
@@ -645,7 +918,6 @@ public class ServiceSocial extends Service {
 
 				}
 
-				Log.d("hey", String.valueOf(whatsapptemp3));
 
 				save("whatsappsec", String.valueOf(whatsapptemp3));
 				save("whatsappmin", String.valueOf(whatsapptemp2));
@@ -682,7 +954,6 @@ public class ServiceSocial extends Service {
 					tumblrtemp1 += 1;
 
 				}
-				Log.d("hey", String.valueOf(twittertemp3));
 
 				save("tumblrsec", String.valueOf(tumblrtemp3));
 				save("tumblrmin", String.valueOf(tumblrtemp2));
@@ -719,7 +990,6 @@ public class ServiceSocial extends Service {
 					instagramtemp1 += 1;
 
 				}
-				Log.d("hey", String.valueOf(twittertemp3));
 
 				save("instagramsec", String.valueOf(instagramtemp3));
 				save("instagrammin", String.valueOf(instagramtemp2));
@@ -758,7 +1028,6 @@ public class ServiceSocial extends Service {
 
 				}
 
-				Log.d("hey", String.valueOf(twittertemp3));
 
 				save("kiksec", String.valueOf(kiktemp3));
 				save("kikmin", String.valueOf(kiktemp2));
@@ -795,7 +1064,6 @@ public class ServiceSocial extends Service {
 					asktemp1 += 1;
 
 				}
-				Log.d("hey", String.valueOf(twittertemp3));
 
 				save("asksec", String.valueOf(asktemp3));
 				save("askmin", String.valueOf(asktemp2));
@@ -832,7 +1100,6 @@ public class ServiceSocial extends Service {
 					bbmtemp1 += 1;
 
 				}
-				Log.d("hey", String.valueOf(bbmtemp3));
 
 				save("bbmsec", String.valueOf(bbmtemp3));
 				save("bbmmin", String.valueOf(bbmtemp2));
@@ -845,113 +1112,76 @@ public class ServiceSocial extends Service {
 
 	};
 
-	private void Not5() {
-		Intent deleteIntent = new Intent(this, close.class);
-		PendingIntent pendingIntentCancel = PendingIntent.getBroadcast(this, 0,
-				deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+	// ///////////////////////////////////
+	private Runnable updateTimerThreadkikm = new Runnable() {
 
-		Intent settingIntent = new Intent(this, settinggg.class);
-		PendingIntent pendingIntentCancel1 = PendingIntent.getBroadcast(this,
-				0, settingIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		public void run() {
 
-		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-				this);
-		mBuilder.setContentTitle("Socials Addict");
-		mBuilder.setContentText("Monitroring Usage..");
-		mBuilder.setTicker("You reached the danger rate of using social networks, go & do something useful");
-		mBuilder.setSmallIcon(R.drawable.ic_launcher);
-		mBuilder.addAction(0, "Stop service", pendingIntentCancel);
-		mBuilder.addAction(0, "Setting", pendingIntentCancel1);
-		mBuilder.setOngoing(true);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
-		Intent resultIntent = new Intent(this, MainActivity.class);
-		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-		stackBuilder.addParentStack(MainActivity.class);
+			if (kikm = true) {
 
-		stackBuilder.addNextIntent(resultIntent);
-		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
-				PendingIntent.FLAG_UPDATE_CURRENT);
-		mBuilder.setContentIntent(resultPendingIntent);
-		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+				kikm3++;
 
-		mNotificationManager.notify(2, mBuilder.build());
+				if (kikm3 >= 60) {
+					kikm3 = 0;
+					kikm2 += 1;
 
-	}
+				}
+				if (kikm2 >= 60) {
+					kikm2 = 0;
+					kikm1 += 1;
 
-	private void Not4() {
-		Intent deleteIntent = new Intent(this, close.class);
-		PendingIntent pendingIntentCancel = PendingIntent.getBroadcast(this, 0,
-				deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+				}
 
-		Intent settingIntent = new Intent(this, settinggg.class);
-		PendingIntent pendingIntentCancel1 = PendingIntent.getBroadcast(this,
-				0, settingIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-		Intent reprt = new Intent(this, report.class);
+				save("kikmhour", String.valueOf(kikm1));
+				save("kikmsec", String.valueOf(kikm3));
+				save("kikmmin", String.valueOf(kikm2));
 
-		PendingIntent pendingIntentCancel2 = PendingIntent.getBroadcast(this,
-				0, reprt, PendingIntent.FLAG_UPDATE_CURRENT);
+				customHandlerkikm.postDelayed(this, 0);
 
-		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-				this);
-		mBuilder.setContentTitle("Socials Addict");
-		mBuilder.setContentText("Monitroring Usage..");
-		mBuilder.setTicker("You are addicted socializer,cut down usage!");
-		mBuilder.setSmallIcon(R.drawable.ic_launcher);
-		mBuilder.addAction(0, "Stop service", pendingIntentCancel);
-		mBuilder.addAction(0, "Setting", pendingIntentCancel1);
-		mBuilder.setOngoing(true);
-		mBuilder.addAction(0, "Report", pendingIntentCancel2);
+			}
+		}
 
-		Intent resultIntent = new Intent(this, MainActivity.class);
-		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-		stackBuilder.addParentStack(MainActivity.class);
+	};
+	// ///////////////////////////////////////
+	private Runnable updateTimerThreadsnap = new Runnable() {
 
-		stackBuilder.addNextIntent(resultIntent);
-		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
-				PendingIntent.FLAG_UPDATE_CURRENT);
-		mBuilder.setContentIntent(resultPendingIntent);
-		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		public void run() {
 
-		mNotificationManager.notify(2, mBuilder.build());
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
-	}
+			if (snapchatt = true) {
 
-	private void Not3() {
-		Intent deleteIntent = new Intent(this, close.class);
-		PendingIntent pendingIntentCancel = PendingIntent.getBroadcast(this, 0,
-				deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+				snap3++;
 
-		Intent settingIntent = new Intent(this, settinggg.class);
-		PendingIntent pendingIntentCancel1 = PendingIntent.getBroadcast(this,
-				0, settingIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-		Intent reprt = new Intent(this, report.class);
+				if (snap3 >= 60) {
+					snap3 = 0;
+					snap2 += 1;
 
-		PendingIntent pendingIntentCancel2 = PendingIntent.getBroadcast(this,
-				0, reprt, PendingIntent.FLAG_UPDATE_CURRENT);
+				}
+				if (snap2 >= 60) {
+					snap2 = 0;
+					snap1 += 1;
+				}
 
-		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-				this);
-		mBuilder.setContentTitle("Socials Addict");
-		mBuilder.setContentText("ATTENTION!! ADDICTION IS NEAR!!");
-		mBuilder.setTicker("Socials Addict");
-		mBuilder.setSmallIcon(R.drawable.ic_launcher);
-		mBuilder.addAction(0, "Stop service", pendingIntentCancel);
-		mBuilder.addAction(0, "Setting", pendingIntentCancel1);
-		mBuilder.setOngoing(true);
-		mBuilder.addAction(0, "Report", pendingIntentCancel2);
+				save("snapsec", String.valueOf(snap3));
+				save("snapmin", String.valueOf(snap2));
+				save("snaphour", String.valueOf(snap1));
 
-		Intent resultIntent = new Intent(this, MainActivity.class);
-		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-		stackBuilder.addParentStack(MainActivity.class);
+				customHandlersnap.postDelayed(this, 0);
 
-		stackBuilder.addNextIntent(resultIntent);
-		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
-				PendingIntent.FLAG_UPDATE_CURRENT);
-		mBuilder.setContentIntent(resultPendingIntent);
-		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+			}
+		}
 
-		mNotificationManager.notify(2, mBuilder.build());
-
-	}
+	};
 
 };

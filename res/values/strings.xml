@@ -5,34 +5,28 @@
     <string name="action_settings">Settings</string>
     <string name="about">
 Socials Addict 
-\n
-\nThe innovative way to track your Social networks usage and cut your addiction
-        
-\n
-\n
-V6.0 Changlog:
-\n\n-Updated to Material Design
-\n-new Icons
-\n-New logo
-\n-Changed timers dependcy to service
-\n-Fixed force close
-\n-More accurate timers
-\n-Added boot reciver
-\n-Re-coded most of the app from scratch
-\n-Tablet support in design
-\n-Bug fixes and stability improvement
-\n-Actions in notifications
-\n-Show your usage report directly from any app through notifications
+\nThe Smartest,Fastest and most accurate social networks monitoring app..
+\n\nthis app is open source project made by Pi Developers Team and signed ander GNU public license, you may use the source code of this app for your own use or re-distrubute it but with mentioning the original source
+\n\nCHANGELOG:
+\nV6.4.2:
+\nUX and UI improvements
+\nFull material elements
+\nBug fixes
 
-\n
+
+
+
 
 </string>
+
     <string name="enable_disable_service">Enable/Disable Service</string>
+    
     <string name="title_activity_setting">Setting</string>
+    
     <string name="pi">
 Pi Developers
 \nCreativity is our middle name.
-\n\nWe are team of young developers trying to indrotude new ideas to android users and make them use the most of there phones.
+\n\nWe are team of young developers trying to indrotude new ideas to android users and make them use the most of their phones.
 \n\nOur goal is to provide same experince on all devices possible, we support all major android versions (3.3.x - 5.x)
 \n\nTeam members:
 \n\n-Mohamed Rashad

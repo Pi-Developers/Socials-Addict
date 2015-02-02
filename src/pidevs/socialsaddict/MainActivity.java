@@ -1,8 +1,12 @@
 package pidevs.socialsaddict;
 
+import java.text.DecimalFormat;
+
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,89 +16,113 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
-	static TextView facebook1, twitter1, tumblr1, instagram1, whatsapp1,
+	 TextView facebook1, twitter1, tumblr1, instagram1, whatsapp1,
 			facebook2, twitter2, tumblr2, instagram2, whatsapp2, facebook3,
 			twitter3, tumblr3, instagram3, whatsapp3, kik1, kik2, kik3, ask1,
 			ask2, ask3, bbm1, bbm2, bbm3, state, service3, service2, service1,
-			totalhour;
-
-	static String facebooksec, twittersec, tumblrsec, instagramsec,
+			totalhour, usage,snap1,snap2,snap3,kikm1,kikm2,kikm3;
+	
+	 String facebooksec, twittersec, tumblrsec, instagramsec,
 			whatsappsec, facebookmin, twittermin, tumblrmin, instagrammin,
 			whatsappmin, facebookhour, twitterhour, tumblrhour, instagramhour,
 			whatsapphour, kiksec, kikmin, kikhour, asksec, askmin, askhour,
 			bbmsec, bbmmin, bbmhour, servicehour, servicesec, servicemin,
-			starti, states, total;
+			starti, states, total, ser1, ser2, ser3, yy,kikmmin,kikmhour,
+			kikmsec,snapsec,snaphour,snapmin,bootchk,firstboot;
 
-	static CompoundButton start;
-
-	static ImageView imageView1, imageView2, imageView3, imageView4,
+	 ImageView imageView1, imageView2, imageView3, imageView4,
 			imageView5, imageView6, imageView7, imageView8;
+	
+	 SharedPreferences spf;
+	 CompoundButton start;
+	 Double x, y, y1, usaget;
+	 int z;
 
-	static SharedPreferences spf;
+	 android.support.v7.app.ActionBar actionBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_main2);
 
 		// Setting action bar color/title/icons..etc
+		FontsOverride.setDefaultFont(this, "DEFAULT", "Roboto-Regular.ttf");
+		FontsOverride.setDefaultFont(this, "MONOSPACE", "Roboto-Regular.ttf");
+		FontsOverride.setDefaultFont(this, "SANS_SERIF", "Roboto-Regular.ttf");
 
-		android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+		actionBar = getSupportActionBar();
 		actionBar.setBackgroundDrawable(new ColorDrawable(0xff01579b));
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(Html.fromHtml("<font color='#ffffff'> <b> Socials Addict </b> </font>"));
 
-		start = (CheckBox) findViewById(R.id.start);
-		totalhour = (TextView) findViewById(R.id.total);
+		// Changes the compound button according to the API
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+   
+			start = (Switch) findViewById(R.id.start);
 
+		} else { start = (CheckBox) findViewById(R.id.start); }
+ 
+		// Text views, many text views
+		totalhour = (TextView) findViewById(R.id.total);
 		facebook1 = (TextView) findViewById(R.id.facebook1);
 		facebook2 = (TextView) findViewById(R.id.facebook2);
 		facebook3 = (TextView) findViewById(R.id.facebook3);
-
 		kik1 = (TextView) findViewById(R.id.kik1);
 		kik2 = (TextView) findViewById(R.id.kik2);
 		kik3 = (TextView) findViewById(R.id.kik3);
-
 		bbm1 = (TextView) findViewById(R.id.bbm1);
 		bbm2 = (TextView) findViewById(R.id.bbm2);
 		bbm3 = (TextView) findViewById(R.id.bbm3);
-
 		ask1 = (TextView) findViewById(R.id.ask1);
 		ask2 = (TextView) findViewById(R.id.ask2);
 		ask3 = (TextView) findViewById(R.id.ask3);
-
 		twitter1 = (TextView) findViewById(R.id.twitter1);
 		twitter2 = (TextView) findViewById(R.id.twitter2);
 		twitter3 = (TextView) findViewById(R.id.twitter3);
-
 		tumblr1 = (TextView) findViewById(R.id.tumblr1);
 		tumblr2 = (TextView) findViewById(R.id.tumblr2);
 		tumblr3 = (TextView) findViewById(R.id.tumblr3);
-
 		instagram1 = (TextView) findViewById(R.id.instagram1);
 		instagram2 = (TextView) findViewById(R.id.instagram2);
 		instagram3 = (TextView) findViewById(R.id.instagram3);
-
 		whatsapp1 = (TextView) findViewById(R.id.whatsapp1);
 		whatsapp2 = (TextView) findViewById(R.id.whatsapp2);
 		whatsapp3 = (TextView) findViewById(R.id.whatsapp3);
-
+		snap1 = (TextView) findViewById(R.id.snap1);
+		snap2 = (TextView) findViewById(R.id.snap2);
+		snap3 = (TextView) findViewById(R.id.snap3);
+		kikm1 = (TextView) findViewById(R.id.kikm1);
+		kikm2 = (TextView) findViewById(R.id.kikm2);
+		kikm3 = (TextView) findViewById(R.id.kikm3);
 		state = (TextView) findViewById(R.id.state);
+		usage = (TextView) findViewById(R.id.textView6);
 
+		// This method loads the sharedprefrences of the activity
 		load();
 
+		
+		
+		
+
+		
+		/*
+		 * Start the tracking service here
+		 */
 		start.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
@@ -104,6 +132,10 @@ public class MainActivity extends ActionBarActivity {
 
 					startService(new Intent(MainActivity.this,
 							ServiceSocial.class));
+
+					Toast.makeText(getApplicationContext(),
+							"Socials Addict started", Toast.LENGTH_SHORT)
+							.show();
 
 					save("start", "true");
 
@@ -120,6 +152,10 @@ public class MainActivity extends ActionBarActivity {
 
 	}
 
+	/*
+	 * 
+	 * The method that save the shared prefrences as strings
+	 */
 	public void save(String key, String value) {
 
 		spf = PreferenceManager.getDefaultSharedPreferences(this);
@@ -130,58 +166,235 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void load() {
+
 		spf = PreferenceManager.getDefaultSharedPreferences(this);
 
+		String fbcheck = spf.getString("facebook", "true");
+		String kikcheck = spf.getString("kik", "true");
+		String bbmcheck = spf.getString("bbm", "true");
+		String askcheck = spf.getString("ask", "true");
+		String twcheck = spf.getString("twitter", "true");
+		String instacheck = spf.getString("instagram", "true");
+		String tumblrcheck = spf.getString("tumblr", "true");
+		String whatsappcheck = spf.getString("whatsapp", "true");
+		String kikmcheck = spf.getString("kikm", "true");
+		String snapcheck = spf.getString("snapchat", "true");
+
+		
+		
+		
+		
 		starti = spf.getString("start", "false");
 		states = spf.getString("state", "low");
 		total = spf.getString("total", "0");
+	    bootchk = spf.getString("boot", "true");
+		firstboot = spf.getString("first", "true");
+
+		ser1 = spf.getString("servicehour", "0");
+		ser2 = spf.getString("servicemin", "0");
+		ser3 = spf.getString("servicesec", "0");
+
+		
+		if(firstboot.isEmpty() || firstboot.equals("true")){
+			
+
+			new AlertDialog.Builder(MainActivity.this)
+					.setTitle("Welcome to socials addict")
+					.setMessage("Read this for best usage of the app:\n\n'Usage Rate' will start to calculate after 24 hours for best accuracy.\n\nAddiction state will start calculating after 4 hours to be accurate\n\nThank you! Have a nice day")
+					.setPositiveButton(android.R.string.yes,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,int which) {
+
+								}
+							})
+
+					.setNegativeButton(android.R.string.no,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int which) {
+								}
+							}).setIcon(R.drawable.icon).show();
+
+			save("first", "false");
+
+		}else{
+			
+			
+		}
+		
+		if (snapcheck.isEmpty()) {
+
+			save("snapchat", "true");
+
+		} else {
+		}	
+		
+		
+		if (kikmcheck.isEmpty()) {
+
+			save("kikm", "true");
+
+		} else {
+		}
+		
+		
+		if (ser1.isEmpty()) {
+
+			save("servicehour", "0");
+
+		} else {
+
+			z = Integer.parseInt(ser1);
+		}
+
+		if (ser2.isEmpty()) {
+
+			save("servicemin", "0");
+
+		} else {
+		}
+
+		if (ser3.isEmpty()) {
+
+			save("servicesec", "0");
+
+		} else {
+		}
+
+		if (fbcheck.isEmpty()) {
+
+			save("facebook", "true");
+
+		} else {
+		}
+
+		if (kikcheck.isEmpty()) {
+
+			save("kik", "true");
+
+		} else {
+		}
+
+		if (bbmcheck.isEmpty()) {
+
+			save("bbm", "true");
+
+		} else {
+		}
+
+		if (askcheck.isEmpty()) {
+
+			save("ask", "true");
+
+		} else {
+		}
+
+		if (twcheck.isEmpty()) {
+
+			save("twitter", "true");
+
+		} else {
+		}
+
+		if (instacheck.isEmpty()) {
+
+			save("instagram", "true");
+
+		} else {
+		}
+
+		if (tumblrcheck.isEmpty()) {
+
+			save("tumblr", "true");
+
+		} else {
+		}
+
+		if (whatsappcheck.isEmpty()) {
+
+			save("whatsapp", "true");
+
+		} else {
+		}
+
+		if (bootchk.isEmpty()) {
+
+			save("boot", "true");
+
+		} else {
+		}
 
 		if (total.isEmpty()) {
 
 			save("total", "0 Hours");
-			save("facebook", "true");
-			save("kik", "true");
-			save("bbm", "true");
-			save("ask", "true");
-			save("twitter", "true");
-			save("instagram", "true");
-			save("tumblr", "true");
-			save("whatsapp", "true");
-			save("boot", "true");
+
+		} else {
+			DecimalFormat df = new DecimalFormat("#.##");
+
+			x = Double.parseDouble(total);
+
+			totalhour.setText(df.format(x) + " Hours");
+
+			if (z > 24) {
+
+				y = ((double) z / 24.0);
+
+				yy = df.format(y);
+
+				y1 = Double.parseDouble(yy);
+
+				usaget = (x / y1);
+
+				usage.setText(df.format(usaget) + " Hour/Day");
+
+			} else {
+
+				usage.setText("0 Hour/Day");
+			}
+
+		}
+
+		if (states.isEmpty()) {
+
+			save("state", "low");
 
 		} else {
 
-			totalhour.setText(total + " Hours");
 		}
 
-		if (states.equalsIgnoreCase("low")) {
+		states = spf.getString("state", "low");
 
-			MainActivity.state.setText("Low");
-			MainActivity.state.setTextColor(Color.parseColor("#32CD32"));
+		if (states.equals("low")) {
+
+			state.setText("Low");
+			state.setTextColor(Color.parseColor("#32CD32"));
+
 		}
 
-		else if (states.equalsIgnoreCase("average")) {
+		else if (states.equals("average")) {
 
-			MainActivity.state.setText("Average");
-			MainActivity.state.setTextColor(Color.parseColor("#32CD32"));
+			state.setText("Average");
+			state.setTextColor(Color.parseColor("#32CD32"));
 
-		} else if (states.equalsIgnoreCase("attention")) {
-			MainActivity.state.setText("ATTENTION");
-			MainActivity.state.setTextColor(Color.parseColor("#FFFF00"));
+		} else if (states.equals("attention")) {
 
-		} else if (states.equalsIgnoreCase("addicted")) {
+			state.setText("ATTENTION");
+			state.setTextColor(Color.parseColor("#fcce1c"));
 
-			MainActivity.state.setText("Addcited");
-			MainActivity.state.setTextColor(Color.parseColor("#FF9933"));
+		} else if (states.equals("addicted")) {
 
-		} else if (states.equalsIgnoreCase("danger")) {
+			state.setText("Addcited");
+			state.setTextColor(Color.parseColor("#FF9933"));
 
-			MainActivity.state.setText("Danger");
-			MainActivity.state.setTextColor(Color.parseColor("#CC0000"));
+		} else if (states.equals("danger")) {
+
+			state.setText("Danger");
+			state.setTextColor(Color.parseColor("#CC0000"));
+
 		} else {
 
-			MainActivity.state.setText("Low");
-			MainActivity.state.setTextColor(Color.parseColor("#32CD32"));
+			state.setText("Low");
+			state.setTextColor(Color.parseColor("#32CD32"));
 
 		}
 
@@ -326,9 +539,9 @@ public class MainActivity extends ActionBarActivity {
 			kik2.setText(kikmin);
 		}
 
-		bbmmin = spf.getString("kikmin", "0");
+		bbmmin = spf.getString("bbmmin", "0");
 		if (bbmmin.isEmpty()) {
-			save("kikmin", "0");
+			save("bbmmin", "0");
 		} else {
 			bbm2.setText(bbmmin);
 		}
@@ -361,6 +574,63 @@ public class MainActivity extends ActionBarActivity {
 			ask1.setText(askhour);
 		}
 
+		
+		
+		
+		
+		
+		
+		
+		////////////////////////////////////////////
+		kikmmin = spf.getString("kimmin", "0");
+		if (kikmmin.isEmpty()) {
+			save("kimmin", "0");
+		} else {
+			kikm2.setText(kikmmin);
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		kikmsec = spf.getString("kikmsec", "0");
+		if (kikmsec.isEmpty()) {
+			save("kikmsec", "0");
+		} else {
+			kikm3.setText(kikmsec);
+		}
+
+		kikmhour = spf.getString("kikmhour", "0");
+		if (kikmhour.isEmpty()) {
+			save("kikmhour", "0");
+		} else {
+			kikm1.setText(kikmhour);
+		}
+
+		snapmin = spf.getString("snapmin", "0");
+		if (snapmin.isEmpty()) {
+			save("snapmin", "0");
+		} else {
+			snap2.setText(snapmin);
+		}
+
+		snapsec = spf.getString("snapsec", "0");
+		if (snapsec.isEmpty()) {
+			save("snapsec", "0");
+		} else {
+			snap3.setText(snapsec);
+		}
+
+		snaphour = spf.getString("snaphour", "0");
+		if (snaphour.isEmpty()) {
+			save("snaphour", "0");
+		} else {
+			snap1.setText(snaphour);
+		}
+/////////////////////////////////////////////////
 	}
 
 	@Override
@@ -397,9 +667,36 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		if (item.getItemId() == R.id.setting) {
+			startActivity(new Intent(MainActivity.this, Setting.class));
 
-			Intent intent = new Intent(MainActivity.this, Setting.class);
-			startActivity(intent);
+		}
+
+		if (item.getItemId() == R.id.sharet) {
+			Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+			sharingIntent.setType("text/plain");
+			String shareBody = "#Socials_Addict\n"
+					+ "I used Social networks for : "
+					+ totalhour.getText().toString()
+					+ "\n\nGet socials addict here : https://play.google.com/store/apps/details?id=pidevs.socialsaddict";
+
+			sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+			startActivity(Intent.createChooser(sharingIntent, "Share using"));
+
+		}
+
+		if (item.getItemId() == R.id.sharea) {
+
+			Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+			sharingIntent.setType("text/plain");
+			String shareBody = "#Socials_Addict\n"
+					+ "My Average Rate of using social networks is : "
+					+ usage.getText().toString()
+					+ "\nMy Addiction State is : "
+					+ state.getText().toString()
+					+ "\n\nGet socials addict here : https://play.google.com/store/apps/details?id=pidevs.socialsaddict";
+
+			sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+			startActivity(Intent.createChooser(sharingIntent, "Share using"));
 
 		}
 
@@ -407,15 +704,7 @@ public class MainActivity extends ActionBarActivity {
 
 	}
 
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			moveTaskToBack(true);
-			return true;
-		}
-		return true;
-	}
-
+	// Check if the service is running to set the checkbox state
 	private boolean isMyServiceRunning(Class<?> serviceClass) {
 		ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		for (RunningServiceInfo service : manager
@@ -430,9 +719,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-
 		load();
-
 	}
 
 	@Override

@@ -4,11 +4,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.view.Menu;
@@ -22,17 +20,19 @@ import android.widget.Toast;
 
 public class Setting extends ActionBarActivity {
 
-	static CheckBox facebookbox, whatsappbox, instagrambox, twitterbox, askbox,
-			bbmbox, kikbox, tumblrbox,boot;
+	CheckBox facebookbox, whatsappbox, instagrambox, twitterbox, askbox,
+			bbmbox, kikbox, tumblrbox,boot,kikmbox,snapchatbox,notbox,clearbox;
+	
 	Button about, clear, pi, shareapp , website;
+	 
 	String fbcheck, whatsappcheck, tumblrcheck, instacheck, twcheck, askcheck,
-			bbmcheck, kikcheck,bootchk;
+			bbmcheck, kikcheck,bootchk,kikmcheck,snapcheck,not,clear1;
 
-	static SharedPreferences spfs;
+    SharedPreferences spfs;
 
+    android.support.v7.app.ActionBar actionBar;
 	
-	
-	
+    ColorDrawable cd;
 	
 	
 	@Override
@@ -40,38 +40,119 @@ public class Setting extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
 
+		FontsOverride.setDefaultFont(this, "DEFAULT", "Roboto-Regular.ttf");
+		FontsOverride.setDefaultFont(this, "MONOSPACE", "Roboto-Regular.ttf");
+		FontsOverride.setDefaultFont(this, "SANS_SERIF", "Roboto-Regular.ttf");
+		
+		
 		about = (Button) findViewById(R.id.aboutapp);
-
 		clear = (Button) findViewById(R.id.clear);
-
 		pi = (Button) findViewById(R.id.pi);
-
-		ColorDrawable cd = new ColorDrawable(getResources().getColor(android.R.color.transparent));
-		cd.setBounds(0, 0, 0, 0);
 
 		facebookbox = (CheckBox) findViewById(R.id.facebookbox);
 		whatsappbox = (CheckBox) findViewById(R.id.whatsappbox);
 		instagrambox = (CheckBox) findViewById(R.id.instagrambox);
 		twitterbox = (CheckBox) findViewById(R.id.twitterbox);
-		tumblrbox = (CheckBox) findViewById(R.id.tumblrbox);
+		tumblrbox = (CheckBox) findViewById(R.id.tumblrbox); 
 		askbox = (CheckBox) findViewById(R.id.askbox);
 		bbmbox = (CheckBox) findViewById(R.id.bbmbox);
 		kikbox = (CheckBox) findViewById(R.id.kikbox);
-
+		kikmbox = (CheckBox) findViewById(R.id.kikmbox);
+		snapchatbox = (CheckBox) findViewById(R.id.snapchatbox);
 		boot = (CheckBox) findViewById(R.id.checkBox1);
-		spfs = PreferenceManager.getDefaultSharedPreferences(this);
-
-		load();
+		notbox =  (CheckBox) findViewById(R.id.checkBox2);
+		clearbox =  (CheckBox) findViewById(R.id.checkBox3);
 		
-		android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-		getSupportActionBar().setIcon(cd);
+		spfs = PreferenceManager.getDefaultSharedPreferences(this);
+		
+	    cd = new ColorDrawable(getResources().getColor(android.R.color.transparent));
+		cd.setBounds(0, 0, 0, 0);
 
+		actionBar = getSupportActionBar();
+		actionBar.setIcon(cd);
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setBackgroundDrawable(new ColorDrawable(0xff01579b));
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(Html.fromHtml("<font color='#ffffff'> <b> Settings  </b> </font>"));
+		actionBar.setTitle(Html.fromHtml("<font color='#ffffff'> <b>Settings</b> </font>"));
 
+		load();
+
+		kikmbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+
+				if (arg1 == true) {
+					
+					save("kikm", "true");
+
+				} else {
+					
+					save("kikm", "false");
+
+				}
+
+			}
+		});
+		
+		
+		clearbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+
+				if (arg1 == true) {
+					
+					save("clear", "true");
+
+				} else {
+					
+					save("clear", "false");
+
+				}
+
+			}
+		});
+		
+		
+		notbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+
+				if (arg1 == true) {
+					
+					save("not", "true");
+
+				} else {
+					
+					save("not", "false");
+
+				}
+
+			}
+		});
+		
+		
+		snapchatbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+
+				if (arg1 == true) {
+					
+					save("snapchat", "true");
+
+				} else {
+					save("snapchat", "false");
+
+				}
+
+			}
+		});
+		
+	
 		
 		facebookbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -253,7 +334,7 @@ public class Setting extends ActionBarActivity {
 
 				new AlertDialog.Builder(Setting.this)
 						.setTitle("Clear")
-						.setMessage("Are you sure you want to reset all timers ?")
+						.setMessage("Are you sure you want to reset all Statistics ?")
 						.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int which) {
 
@@ -261,12 +342,10 @@ public class Setting extends ActionBarActivity {
 										save("facebooksec", "0");
 										save("facebookmin", "0");
 										save("facebookhour", "0");
-
 	
 										save("twittersec", "0");
 										save("twittermin", "0");
 										save("twitterhour", "0");
-
 
 										save("whatsappsec", "0");
 										save("whatsappmin", "0");
@@ -276,11 +355,9 @@ public class Setting extends ActionBarActivity {
 										save("tumblrmin", "0");
 										save("tumblrhour", "0");
 
-
 										save("instagramsec", "0");
 										save("instagrammin", "0");
 										save("instagramhour", "0");
-
 								
 										save("asksec", "0");
 										save("askmin", "0");
@@ -290,16 +367,27 @@ public class Setting extends ActionBarActivity {
 										save("bbmmin", "0");
 										save("bbmhour", "0");
 
-
 										save("kiksec", "0");
 										save("kikmin", "0");
 										save("kikhour", "0");
 
+										save("snaphour", "0");
+										save("snapsec", "0");
+										save("snapmin", "0");
+										
+										save("kikmmin", "0");
+										save("kikmsec", "0");
+										save("kikmhour", "0");
+									
+										
 										save("servicesec", "0");
 										save("servicemin", "0");
 										save("servicehour", "0");
 
-										Toast.makeText(getApplicationContext(), "Results cleared successfully !", Toast.LENGTH_SHORT).show(); 
+										save("state", "low");
+										save("total", "0");
+
+										Toast.makeText(getApplicationContext(), "Statistics resetted successfully !", Toast.LENGTH_SHORT).show(); 
 										
 									
 									}})
@@ -310,25 +398,7 @@ public class Setting extends ActionBarActivity {
 
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public void save(String key, String value) {
 		spfs = PreferenceManager.getDefaultSharedPreferences(this);
 		Editor edit = spfs.edit();
@@ -354,8 +424,62 @@ public class Setting extends ActionBarActivity {
 			}
 		}	
 		
+		
+		not = spfs.getString("not", "false");
+		
+		
+		if (not.isEmpty()) {
+
+		} else {
+			if (not.equals("true")) {
+				notbox.setChecked(true);
+			} else {
+				notbox.setChecked(false);
+			}
+		}	
 
 		
+		
+		clear1 = spfs.getString("clear", "false");
+		
+		if (clear1.isEmpty()) {
+
+		} else {
+			if (clear1.equals("true")) {
+				clearbox.setChecked(true);
+			} else {
+				clearbox.setChecked(false);
+			}
+		}	
+
+		
+		
+		kikmcheck = spfs.getString("kikm", "true");
+
+		if (kikmcheck.isEmpty()) {
+
+		} else {
+			if (kikmcheck.equals("true")) {
+				kikmbox.setChecked(true);
+			} else {
+				kikmbox.setChecked(false);
+			}
+		}
+		
+		
+		snapcheck = spfs.getString("snapchat", "true");
+
+		if (snapcheck.isEmpty()) {
+
+		} else {
+			if (snapcheck.equals("true")) {
+				snapchatbox.setChecked(true);
+			} else {
+				snapchatbox.setChecked(false);
+			}
+		}
+		
+
 		
 		
 		

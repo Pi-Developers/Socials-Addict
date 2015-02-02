@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -7,85 +8,132 @@
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#f5f5f5" >
+        android:background="#ffffff"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/shape"
+                android:background="#ffffff"
                 android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/bbmtext"
-                    android:layout_width="fill_parent"
+                    android:layout_width="490dp"
                     android:layout_height="30dp"
-                    android:background="#01579b"
+                    android:layout_weight="0.50"
                     android:gravity="left|center"
-                    android:text=" Clear options"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#f5f5f5" />
+                    android:text="   Clear options"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#01579b"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
 
                 <Button
                     android:id="@+id/clear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.73"
                     android:background="@drawable/selector"
                     android:gravity="fill|left"
-                    android:text=" Clear all results"
-                    android:textSize="20sp" />
+                    android:text="   Clear all"
+                    android:textColor="#000000"
+                    android:typeface="sans" />
 
                 <TextView
-                    android:id="@+id/bbmtext"
+                    android:id="@+id/bbmtextr"
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
-                    android:background="#01579b"
                     android:gravity="left|center"
-                    android:text=" Miscellaneous options"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#f5f5f5" />
+                    android:text="   Misc. options"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#01579b"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/checkBox1"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
-                    android:background="#f5f5f5"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ffffff"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text=" Start service on boot"
-                    android:textSize="20sp" />
+                    android:paddingLeft="5dp"
+                    android:text="Start service on boot"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ffffff"
+                    android:button="@drawable/custom_checkbox"
+                    android:paddingLeft="5dp"
+                    android:text="Clear statistics daily"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ffffff"
+                    android:button="@drawable/custom_checkbox"
+                    android:paddingLeft="5dp"
+                    android:text="Hide ongoing notification"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="#f5f5f5"
+                android:background="#ffffff"
                 android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/TextView01"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:background="#01579b"
+                    android:layout_marginLeft="5dp"
                     android:gravity="left|center"
-                    android:text=" Switch"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#f5f5f5" />
+                    android:text=" Switches"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#01579b"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/facebookbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/TextView01"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="Facebook"
-                    android:textSize="20sp" />
+                    android:text=" Facebook"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/twitterbox"
@@ -93,53 +141,86 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/facebookbox"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="Twitter"
-                    android:textSize="20sp" />
+                    android:text=" Twitter"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/instagrambox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/twitterbox"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="Instagram"
-                    android:textSize="20sp" />
+                    android:text=" Instagram"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/askbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="Ask.fm"
-                    android:textSize="20sp" />
+                    android:text=" Ask.fm"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/bbmbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="BBM"
-                    android:textSize="20sp" />
+                    android:text=" BBM Messenger"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/tumblrbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/instagrambox"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="tumblr"
-                    android:textSize="20sp" />
+                    android:text=" Tumblr"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/kikbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                                        android:layout_marginLeft="10dp"
+
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="Kik"
-                    android:textSize="20sp" />
+                    android:text=" Google+"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
 
                 <CheckBox
                     android:id="@+id/whatsappbox"
@@ -147,15 +228,47 @@
                     android:layout_height="wrap_content"
                     android:layout_alignRight="@+id/instagrambox"
                     android:layout_below="@+id/tumblrbox"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
                     android:checked="true"
-                    android:text="Whatsapp"
-                    android:textSize="20sp" />
+                    android:text=" Whatsapp Messenger"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
+
+                <CheckBox
+                    android:id="@+id/snapchatbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
+                    android:checked="true"
+                    android:text=" Snapchat"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <CheckBox
+                    android:id="@+id/kikmbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/custom_checkbox"
+                    android:checked="true"
+                    android:text=" Kik Messenger"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/shape"
+                android:background="#ffffff"
                 android:orientation="vertical" >
 
                 <TextView
@@ -164,29 +277,32 @@
                     android:layout_height="30dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:background="#01579b"
                     android:gravity="left|center"
-                    android:text=" About"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#f5f5f5" />
+                    android:text="    About"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#01579b"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
 
                 <Button
                     android:id="@+id/aboutapp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:background="@drawable/selector"
                     android:gravity="fill|fill_horizontal"
-                    android:text="  About Socials Addict"
-                    android:textSize="20sp" />
+                    android:text="    About Socials Addict"
+                    android:textColor="#000000"
+                    android:typeface="sans" />
 
                 <Button
                     android:id="@+id/pi"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:background="@drawable/selector"
                     android:gravity="fill|left"
-                    android:text="  About Pi developers"
-                    android:textSize="20sp" />
+                    android:text="    About Pi developers"
+                    android:textColor="#000000"
+                    android:typeface="sans" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

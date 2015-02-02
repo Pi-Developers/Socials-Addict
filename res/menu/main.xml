@@ -5,11 +5,23 @@
         android:id="@+id/share"
         android:icon="@drawable/shareic"
         android:orderInCategory="100"
-        android:title="Share"
-        hmkcode:showAsAction="always"/>
+        android:title="Share statistics"
+       />
+      <item
+        android:id="@+id/sharet"
+        android:icon="@drawable/shareic"
+        android:orderInCategory="100"
+        android:title="Share Total socialize"
+       />
+        <item
+        android:id="@+id/sharea"
+        android:icon="@drawable/shareic"
+        android:orderInCategory="100"
+        android:title="Share Usage and Addiction"
+       />
     <item
         android:id="@+id/setting"
-        android:icon="@drawable/settingic"
+        android:icon="@drawable/setting_ic"
         android:orderInCategory="99"
         android:title="Setting"
         hmkcode:showAsAction="always"/>
