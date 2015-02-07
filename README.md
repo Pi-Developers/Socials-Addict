@@ -3,13 +3,16 @@ Socials-Addict
 
                                       The world's best social-network-usage-tracker
                                       
-                                      ![alt tag](http://s17.postimg.org/f0o4ahlsv/UUv_Yo_Mt_P.jpg:large)
+ ![alt tag](http://s17.postimg.org/f0o4ahlsv/UUv_Yo_Mt_P.jpg:large)
 
 
 
 Introduction :
 
-     We are all addicted to social networks to contact our family, friends, share news and see the world, and we waste alot       of time in this thing, and it makes us less productive and study/work less, sadly.So we created this App to Calculate        the time you waste on social networks, and share your addiction number with the world.
+     We are all addicted to social networks to contact our family, friends, share news and see the world, and we waste alot 
+     of time in this thing, and it makes us less productive and study/work less, sadly.So we created this App to Calculate 
+     the time you waste on social networks, and share your addiction number with the world.
+     
    
 Features :
     
