@@ -7,15 +7,14 @@ Socials-Addict
 
 
 
-Introduction :
+**Introduction :**
 
-     We are all addicted to social networks to contact our family, friends, share news and see the world,
-     and we waste alot of time in this thing, and it makes us less productive and study/work less, sadly.
-     So we created this App to Calculate the time you waste on social networks, and share your addiction 
-     number with the world.
-     
-   
-Features :
+>>We are all addicted to social networks to contact our family, friends, share news and see the world,
+>>and we waste alot of time in this thing, and it makes us less productive and study/work less, sadly.
+>>So we created this App to Calculate the time you waste on social networks, and share your addiction 
+>>number with the world.
+ 
+**Features :**
     
      1-Track usage of : Facebook ,Twitter , WhatsApp , Tumblr , Instagram , Kik , BBM and Ask.fm
      2-Share desired result on various networks with friends
@@ -34,11 +33,11 @@ Features :
      
      
      
-Downloads :     
+**Downloads :**     
      
  https://play.google.com/store/apps/details?id=pidevs.socialsaddict
      
      
-XDA Thread :
+**XDA Thread :**
      
  http://forum.xda-developers.com/showthread.php?t=2705080
