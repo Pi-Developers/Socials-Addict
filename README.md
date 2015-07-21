@@ -27,13 +27,18 @@ Socials-Addict
 >>5-Ram friendly
 
 >>6-Clear all results by one click
+
 >>7-Light weight ( ~800 KB)
+
 >>8-Works with about 85% of devices from 2.3.3 to 4.4.3
->>9-Works with about 90% of devices from 2.3.x to 4.x
->>10-Start automatically on boot
->>11-Material Designed
->>12-get usage statistics directly from notifications (Jellybean and later)
->>13-Stop tracking from notifications (Jellybean and later)
+
+>>9-Start automatically on boot
+
+>>10-Material Designed
+
+>>11-get usage statistics directly from notifications (Jellybean and later)
+
+>>12-Stop tracking from notifications (Jellybean and later)
 
 
 
