@@ -17,10 +17,15 @@ Socials-Addict
 **Features :**
     
 >>1-Track usage of : Facebook ,Twitter , WhatsApp , Tumblr , Instagram , Kik , BBM and Ask.fm
+
 >>2-Share desired result on various networks with friends
+
 >>3-Share statistics on various networks with friends 
+
 >>4-Choose your favorites apps only to run
+
 >>5-Ram friendly
+
 >>6-Clear all results by one click
 >>7-Light weight ( ~800 KB)
 >>8-Works with about 85% of devices from 2.3.3 to 4.4.3
