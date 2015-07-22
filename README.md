@@ -42,11 +42,10 @@ Socials-Addict
 
 
 
-
-
 **Downloads :**     
 
 >>https://play.google.com/store/apps/details?id=pidevs.socialsaddict
+
 
 
 **XDA Thread :**
