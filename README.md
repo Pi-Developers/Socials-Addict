@@ -1,7 +1,7 @@
 Socials-Addict
 ==============
 
-                               The world's best social-network-usage-tracker
+**The world's best social-network-usage-tracker**
                                       
  ![alt tag](http://s17.postimg.org/f0o4ahlsv/UUv_Yo_Mt_P.jpg:large)
 
