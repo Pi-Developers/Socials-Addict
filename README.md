@@ -29,9 +29,9 @@ Socials-Addict
 
 >>6-Clear all results by one click
 
->>7-Light weight ( ~800 KB)
+>>7-Light weight
 
->>8-Works with about 85% of devices from 2.3.3 to 4.4.3
+>>8-Works with about 85% of devices from 2.3.3 to 5.x.x
 
 >>9-Start automatically on boot
 
