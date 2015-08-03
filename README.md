@@ -6,6 +6,7 @@ Socials-Addict
  ![alt tag](http://s17.postimg.org/f0o4ahlsv/UUv_Yo_Mt_P.jpg:large)
 
 
+**Current version : 6.5**
 
 **Introduction :**
 
