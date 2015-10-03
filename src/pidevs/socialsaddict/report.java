@@ -92,7 +92,7 @@ public class report extends BroadcastReceiver {
 		
 		if (z > 24) {
 
-		 usaget = (x / 24.0);
+		     usaget = (x / 24.0);
 			
 			 y = ((double) z/24.0);
 			
@@ -112,7 +112,8 @@ public class report extends BroadcastReceiver {
 
 
 		
-		Toast.makeText(context, "SOCIALS ADDICT REPORT TOAST\n------------------------------------------------\n" + "Usage statisitcs :\n\n" + Total + "     " + Total1 + "\n" + Total3 + "    " + Total4 + "\n" + Total2 + "            " + Total5 + "\n" + Total6 + "     " + Total7 + "\n" + Total8 + "     " + Total9 + "\n\n\n " + "Total consumption :    " + df.format(x) + " hours"+ "\n\n\n " + "Addiction state :    " + states +  "\n\n\n " + "Usage Rate:   "  + df.format(usaget) + "  hours/day"  , Toast.LENGTH_LONG).show();
+		Toast.makeText(context, "SOCIALS ADDICT REPORT TOAST\n___________________________________________\n" + "Usage statisitcs :\n\n" + Total + "     " + Total1 + "\n" + Total3 + "    " + Total4 + "\n" + Total2 + "            " + Total5 + "\n" + Total6 + "     " + Total7 + "\n" + Total8 + "     " + Total9 + "\n\n\n " + "Total consumption :    " + df.format(x) + " hours"+ "\n\n\n " + "Addiction state :    " + states +  "\n\n\n " + "Usage Rate:   "  + df.format(usaget) + "  hours/day"  , Toast.LENGTH_LONG).show();
 
+		
 	}
 }

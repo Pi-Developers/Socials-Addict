@@ -26,9 +26,10 @@
                     android:id="@+id/bbmtext"
                     android:layout_width="490dp"
                     android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="0.50"
                     android:gravity="left|center"
-                    android:text="   Clear options"
+                    android:text=" Clear Options"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#01579b"
                     android:textStyle="bold"
@@ -41,8 +42,9 @@
                     android:layout_weight="0.73"
                     android:background="@drawable/selector"
                     android:gravity="fill|left"
-                    android:text="   Clear all"
+                    android:text="   Clear All"
                     android:textColor="#000000"
+                    android:textSize="17sp"
                     android:typeface="sans" />
 
                 <TextView
@@ -50,7 +52,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
                     android:gravity="left|center"
-                    android:text="   Misc. options"
+                    android:text="  Misc. options"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#01579b"
                     android:textStyle="bold"
@@ -67,7 +69,7 @@
                     android:button="@drawable/custom_checkbox"
                     android:checked="true"
                     android:paddingLeft="5dp"
-                    android:text="Start service on boot"
+                    android:text="@string/start"
                     android:textColor="#000000"
                     android:textSize="17sp"
                     android:typeface="sans" />
@@ -82,7 +84,7 @@
                     android:background="#ffffff"
                     android:button="@drawable/custom_checkbox"
                     android:paddingLeft="5dp"
-                    android:text="Clear statistics daily"
+                    android:text="@string/dailyclear"
                     android:textColor="#000000"
                     android:textSize="17sp"
                     android:typeface="sans" />
@@ -97,7 +99,21 @@
                     android:background="#ffffff"
                     android:button="@drawable/custom_checkbox"
                     android:paddingLeft="5dp"
-                    android:text="Hide ongoing notification"
+                    android:text="@string/not"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:typeface="sans" />
+
+                <CheckBox
+                    android:id="@+id/checkBox66"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#ffffff"
+                    android:button="@drawable/custom_checkbox"
+                    android:paddingLeft="5dp"
+                    android:text="Enable richer notification"
                     android:textColor="#000000"
                     android:textSize="17sp"
                     android:typeface="sans" />
@@ -212,8 +228,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
-                                        android:layout_marginLeft="10dp"
-
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:button="@drawable/custom_checkbox"
                     android:checked="true"
@@ -278,7 +293,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:gravity="left|center"
-                    android:text="    About"
+                    android:text="  About"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#01579b"
                     android:textStyle="bold"
@@ -290,19 +305,12 @@
                     android:layout_height="40dp"
                     android:background="@drawable/selector"
                     android:gravity="fill|fill_horizontal"
-                    android:text="    About Socials Addict"
+                    android:text="    About"
                     android:textColor="#000000"
+                    android:textSize="17sp"
                     android:typeface="sans" />
 
-                <Button
-                    android:id="@+id/pi"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/selector"
-                    android:gravity="fill|left"
-                    android:text="    About Pi developers"
-                    android:textColor="#000000"
-                    android:typeface="sans" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

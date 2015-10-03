@@ -26,35 +26,38 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@SuppressWarnings("deprecation")
 public class MainActivity extends ActionBarActivity {
 
-	 TextView facebook1, twitter1, tumblr1, instagram1, whatsapp1,
-			facebook2, twitter2, tumblr2, instagram2, whatsapp2, facebook3,
-			twitter3, tumblr3, instagram3, whatsapp3, kik1, kik2, kik3, ask1,
-			ask2, ask3, bbm1, bbm2, bbm3, state, service3, service2, service1,
-			totalhour, usage,snap1,snap2,snap3,kikm1,kikm2,kikm3;
-	
-	 String facebooksec, twittersec, tumblrsec, instagramsec,
-			whatsappsec, facebookmin, twittermin, tumblrmin, instagrammin,
-			whatsappmin, facebookhour, twitterhour, tumblrhour, instagramhour,
-			whatsapphour, kiksec, kikmin, kikhour, asksec, askmin, askhour,
-			bbmsec, bbmmin, bbmhour, servicehour, servicesec, servicemin,
-			starti, states, total, ser1, ser2, ser3, yy,kikmmin,kikmhour,
-			kikmsec,snapsec,snaphour,snapmin,bootchk,firstboot;
+	TextView facebook1, twitter1, tumblr1, instagram1, whatsapp1, facebook2,
+			twitter2, tumblr2, instagram2, whatsapp2, facebook3, twitter3,
+			tumblr3, instagram3, whatsapp3, kik1, kik2, kik3, ask1, ask2, ask3,
+			bbm1, bbm2, bbm3, state, service3, service2, service1, totalhour,
+			usage, snap1, snap2, snap3, kikm1, kikm2, kikm3;
 
-	 ImageView imageView1, imageView2, imageView3, imageView4,
-			imageView5, imageView6, imageView7, imageView8;
-	
-	 SharedPreferences spf;
-	 CompoundButton start;
-	 Double x, y, y1, usaget;
-	 int z;
+	String facebooksec, twittersec, tumblrsec, instagramsec, whatsappsec,
+			facebookmin, twittermin, tumblrmin, instagrammin, whatsappmin,
+			facebookhour, twitterhour, tumblrhour, instagramhour, whatsapphour,
+			kiksec, kikmin, kikhour, asksec, askmin, askhour, bbmsec, bbmmin,
+			bbmhour, servicehour, servicesec, servicemin, starti, states,
+			total, ser1, ser2, ser3, yy, kikmmin, kikmhour, kikmsec, snapsec,
+			snaphour, snapmin, bootchk, firstboot;
 
-	 android.support.v7.app.ActionBar actionBar;
+	ImageView imageView1, imageView2, imageView3, imageView4, imageView5,
+			imageView6, imageView7, imageView8;
+
+	SharedPreferences spf;
+	CompoundButton start;
+	Double x, y, y1, usaget;
+	int z;
+
+	int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+
+	android.support.v7.app.ActionBar actionBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main2);
@@ -68,15 +71,21 @@ public class MainActivity extends ActionBarActivity {
 		actionBar.setBackgroundDrawable(new ColorDrawable(0xff01579b));
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(Html.fromHtml("<font color='#ffffff'> <b> Socials Addict </b> </font>"));
+		actionBar
+				.setTitle(Html
+						.fromHtml("<font color='#ffffff'> <b> Socials Addict </b> </font>"));
 
 		// Changes the compound button according to the API
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-   
+
 			start = (Switch) findViewById(R.id.start);
 
-		} else { start = (CheckBox) findViewById(R.id.start); }
- 
+		} else {
+
+			start = (CheckBox) findViewById(R.id.start);
+
+		}
+
 		// Text views, many text views
 		totalhour = (TextView) findViewById(R.id.total);
 		facebook1 = (TextView) findViewById(R.id.facebook1);
@@ -115,11 +124,6 @@ public class MainActivity extends ActionBarActivity {
 		// This method loads the sharedprefrences of the activity
 		load();
 
-		
-		
-		
-
-		
 		/*
 		 * Start the tracking service here
 		 */
@@ -129,22 +133,45 @@ public class MainActivity extends ActionBarActivity {
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 
 				if (arg1 == true) {
+					
+					save("start", "true");
 
-					startService(new Intent(MainActivity.this,
-							ServiceSocial.class));
+					if (currentapiVersion >= android.os.Build.VERSION_CODES.LOLLIPOP
+							|| currentapiVersion >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
+
+						startService(new Intent(MainActivity.this,
+								LollipopService.class));
+
+					} else {
+
+						startService(new Intent(MainActivity.this,
+								ServiceSocial.class));
+
+					}
 
 					Toast.makeText(getApplicationContext(),
 							"Socials Addict started", Toast.LENGTH_SHORT)
 							.show();
 
-					save("start", "true");
 
 				} else {
 
-					stopService(new Intent(MainActivity.this,
-							ServiceSocial.class));
-
 					save("start", "false");
+
+					
+					if (currentapiVersion >= android.os.Build.VERSION_CODES.LOLLIPOP
+							|| currentapiVersion >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
+
+						stopService(new Intent(MainActivity.this,
+								LollipopService.class));
+
+					} else {
+
+						stopService(new Intent(MainActivity.this,
+								ServiceSocial.class));
+
+					}
+
 				}
 
 			}
@@ -169,6 +196,9 @@ public class MainActivity extends ActionBarActivity {
 
 		spf = PreferenceManager.getDefaultSharedPreferences(this);
 
+		
+		
+		 
 		String fbcheck = spf.getString("facebook", "true");
 		String kikcheck = spf.getString("kik", "true");
 		String bbmcheck = spf.getString("bbm", "true");
@@ -180,64 +210,39 @@ public class MainActivity extends ActionBarActivity {
 		String kikmcheck = spf.getString("kikm", "true");
 		String snapcheck = spf.getString("snapchat", "true");
 
-		
-		
-		
-		
 		starti = spf.getString("start", "false");
 		states = spf.getString("state", "low");
 		total = spf.getString("total", "0");
-	    bootchk = spf.getString("boot", "true");
+		bootchk = spf.getString("boot", "true");
 		firstboot = spf.getString("first", "true");
 
 		ser1 = spf.getString("servicehour", "0");
 		ser2 = spf.getString("servicemin", "0");
 		ser3 = spf.getString("servicesec", "0");
 
-		
-		if(firstboot.isEmpty() || firstboot.equals("true")){
-			
+		if (firstboot.isEmpty() || firstboot.equals("true")) {
 
-			new AlertDialog.Builder(MainActivity.this)
-					.setTitle("Welcome to socials addict")
-					.setMessage("Read this for best usage of the app:\n\n'Usage Rate' will start to calculate after 24 hours for best accuracy.\n\nAddiction state will start calculating after 4 hours to be accurate\n\nThank you! Have a nice day")
-					.setPositiveButton(android.R.string.yes,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,int which) {
-
-								}
-							})
-
-					.setNegativeButton(android.R.string.no,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int which) {
-								}
-							}).setIcon(R.drawable.icon).show();
-
+		    startActivity(new Intent(MainActivity.this , Welcome.class));
 			save("first", "false");
 
-		}else{
-			
-			
+		} else {
+
 		}
-		
+
 		if (snapcheck.isEmpty()) {
 
 			save("snapchat", "true");
 
 		} else {
-		}	
-		
-		
+		}
+
 		if (kikmcheck.isEmpty()) {
 
 			save("kikm", "true");
 
 		} else {
 		}
-		
-		
+
 		if (ser1.isEmpty()) {
 
 			save("servicehour", "0");
@@ -371,7 +376,7 @@ public class MainActivity extends ActionBarActivity {
 
 		}
 
-		else if (states.equals("average")) {
+		else if (states.equals("Average")) {
 
 			state.setText("Average");
 			state.setTextColor(Color.parseColor("#32CD32"));
@@ -381,12 +386,12 @@ public class MainActivity extends ActionBarActivity {
 			state.setText("ATTENTION");
 			state.setTextColor(Color.parseColor("#fcce1c"));
 
-		} else if (states.equals("addicted")) {
+		} else if (states.equals("Addicted")) {
 
 			state.setText("Addcited");
 			state.setTextColor(Color.parseColor("#FF9933"));
 
-		} else if (states.equals("danger")) {
+		} else if (states.equals("DANGER")) {
 
 			state.setText("Danger");
 			state.setTextColor(Color.parseColor("#CC0000"));
@@ -398,7 +403,10 @@ public class MainActivity extends ActionBarActivity {
 
 		}
 
-		if (starti.equals("true") && isMyServiceRunning(ServiceSocial.class)) {
+		if (starti.equals("true") && isMyServiceRunning(ServiceSocial.class)
+				|| isMyServiceRunning(LollipopService.class)
+				&& starti.equals("true")) {
+
 			start.setChecked(true);
 
 		} else {
@@ -406,231 +414,216 @@ public class MainActivity extends ActionBarActivity {
 
 		}
 
-		facebooksec = spf.getString("facebooksec", "0");
+		facebooksec = spf.getString("facebooksec", "00");
 		if (facebooksec.isEmpty()) {
-			save("facebooksec", "0");
+			save("facebooksec", "00");
 		} else {
 			facebook3.setText(facebooksec);
 		}
 
-		facebookmin = spf.getString("facebookmin", "0");
+		facebookmin = spf.getString("facebookmin", "00");
 		if (facebookmin.isEmpty()) {
-			save("facebookmin", "0");
+			save("facebookmin", "00");
 		} else {
 			facebook2.setText(facebookmin);
 		}
 
-		facebookhour = spf.getString("facebookhour", "0");
+		facebookhour = spf.getString("facebookhour", "00");
 		if (facebookhour.isEmpty()) {
-			save("facebookhour", "0");
+			save("facebookhour", "00");
 		} else {
 			facebook1.setText(facebookhour);
 		}
 
-		twittersec = spf.getString("twittersec", "0");
+		twittersec = spf.getString("twittersec", "00");
 		if (twittersec.isEmpty()) {
-			save("twittersec", "0");
+			save("twittersec", "00");
 		} else {
 			twitter3.setText(twittersec);
 		}
 
-		twittermin = spf.getString("twittermin", "0");
+		twittermin = spf.getString("twittermin", "00");
 		if (twittermin.isEmpty()) {
-			save("twittermin", "0");
+			save("twittermin", "00");
 		} else {
 			twitter2.setText(twittermin);
 		}
 
-		twitterhour = spf.getString("twitterhour", "0");
+		twitterhour = spf.getString("twitterhour", "00");
 		if (twitterhour.isEmpty()) {
-			save("twitterhour", "0");
+			save("twitterhour", "00");
 		} else {
 			twitter1.setText(twitterhour);
 		}
 
-		tumblrsec = spf.getString("tumblrsec", "0");
+		tumblrsec = spf.getString("tumblrsec", "00");
 		if (tumblrsec.isEmpty()) {
-			save("tumblrsec", "0");
+			save("tumblrsec", "00");
 		} else {
 			tumblr3.setText(tumblrsec);
 		}
 
-		tumblrmin = spf.getString("tumblrmin", "0");
+		tumblrmin = spf.getString("tumblrmin", "00");
 		if (tumblrmin.isEmpty()) {
-			save("tumblrmin", "0");
+			save("tumblrmin", "00");
 		} else {
 			tumblr2.setText(tumblrmin);
 		}
 
-		tumblrhour = spf.getString("tumblrhour", "0");
+		tumblrhour = spf.getString("tumblrhour", "00");
 		if (tumblrhour.isEmpty()) {
-			save("tumblrhour", "0");
+			save("tumblrhour", "00");
 		} else {
 			tumblr1.setText(tumblrhour);
 		}
 
-		whatsappsec = spf.getString("whatsappsec", "0");
+		whatsappsec = spf.getString("whatsappsec", "00");
 		if (whatsappsec.isEmpty()) {
-			save("whatsappsec", "0");
+			save("whatsappsec", "00");
 		} else {
 			whatsapp3.setText(whatsappsec);
 		}
 
-		whatsappmin = spf.getString("whatsappmin", "0");
+		whatsappmin = spf.getString("whatsappmin", "00");
 		if (whatsappmin.isEmpty()) {
-			save("whatsappmin", "0");
+			save("whatsappmin", "00");
 		} else {
 			whatsapp2.setText(whatsappmin);
 		}
 
-		whatsapphour = spf.getString("whatsapphour", "0");
+		whatsapphour = spf.getString("whatsapphour", "00");
 		if (whatsapphour.isEmpty()) {
-			save("whatsapphour", "0");
+			save("whatsapphour", "00");
 		} else {
 			whatsapp1.setText(whatsapphour);
 		}
 
-		instagramsec = spf.getString("instagramsec", "0");
+		instagramsec = spf.getString("instagramsec", "00");
 		if (instagramsec.isEmpty()) {
-			save("instagramsec", "0");
+			save("instagramsec", "00");
 		} else {
 			instagram3.setText(instagramsec);
 		}
 
-		instagrammin = spf.getString("instagrammin", "0");
+		instagrammin = spf.getString("instagrammin", "00");
 		if (instagrammin.isEmpty()) {
-			save("instagrammin", "0");
+			save("instagrammin", "00");
 		} else {
 			instagram2.setText(instagrammin);
 		}
 
-		instagramhour = spf.getString("instagramhour", "0");
+		instagramhour = spf.getString("instagramhour", "00");
 		if (instagramhour.isEmpty()) {
-			save("instagramhour", "0");
+			save("instagramhour", "00");
 		} else {
 			instagram1.setText(instagramhour);
 		}
 
-		kiksec = spf.getString("kiksec", "0");
+		kiksec = spf.getString("kiksec", "00");
 		if (kiksec.isEmpty()) {
-			save("kiksec", "0");
+			save("kiksec", "00");
 		} else {
 			kik3.setText(kiksec);
 		}
 
-		kikhour = spf.getString("kikhour", "0");
+		kikhour = spf.getString("kikhour", "00");
 		if (kikhour.isEmpty()) {
-			save("kikhour", "0");
+			save("kikhour", "00");
 		} else {
 			kik1.setText(kikhour);
 		}
 
-		bbmsec = spf.getString("bbmsec", "0");
+		bbmsec = spf.getString("bbmsec", "00");
 		if (bbmsec.isEmpty()) {
-			save("bbmsec", "0");
+			save("bbmsec", "00");
 		} else {
 			bbm3.setText(bbmsec);
 		}
 
-		kikmin = spf.getString("kikmin", "0");
+		kikmin = spf.getString("kikmin", "00");
 		if (kikmin.isEmpty()) {
-			save("kikmin", "0");
+			save("kikmin", "00");
 		} else {
 			kik2.setText(kikmin);
 		}
 
-		bbmmin = spf.getString("bbmmin", "0");
+		bbmmin = spf.getString("bbmmin", "00");
 		if (bbmmin.isEmpty()) {
-			save("bbmmin", "0");
+			save("bbmmin", "00");
 		} else {
 			bbm2.setText(bbmmin);
 		}
 
-		bbmhour = spf.getString("bbmhour", "0");
+		bbmhour = spf.getString("bbmhour", "00");
 		if (bbmhour.isEmpty()) {
-			save("bbmhour", "0");
+			save("bbmhour", "00");
 		} else {
 			bbm1.setText(bbmhour);
 		}
 
-		asksec = spf.getString("asksec", "0");
+		asksec = spf.getString("asksec", "00");
 		if (asksec.isEmpty()) {
-			save("asksec", "0");
+			save("asksec", "00");
 		} else {
 			ask3.setText(asksec);
 		}
 
-		askmin = spf.getString("askmin", "0");
+		askmin = spf.getString("askmin", "00");
 		if (askmin.isEmpty()) {
-			save("askmin", "0");
+			save("askmin", "00");
 		} else {
 			ask2.setText(askmin);
 		}
 
-		askhour = spf.getString("askhour", "0");
+		askhour = spf.getString("askhour", "00");
 		if (askhour.isEmpty()) {
-			save("askhour", "0");
+			save("askhour", "00");
 		} else {
 			ask1.setText(askhour);
 		}
 
-		
-		
-		
-		
-		
-		
-		
-		////////////////////////////////////////////
-		kikmmin = spf.getString("kimmin", "0");
+		kikmmin = spf.getString("kimmin", "00");
 		if (kikmmin.isEmpty()) {
-			save("kimmin", "0");
+			save("kimmin", "00");
 		} else {
 			kikm2.setText(kikmmin);
 		}
 
-		
-		
-		
-		
-		
-		
-		
-		kikmsec = spf.getString("kikmsec", "0");
+		kikmsec = spf.getString("kikmsec", "00");
 		if (kikmsec.isEmpty()) {
-			save("kikmsec", "0");
+			save("kikmsec", "00");
 		} else {
 			kikm3.setText(kikmsec);
 		}
 
-		kikmhour = spf.getString("kikmhour", "0");
+		kikmhour = spf.getString("kikmhour", "00");
 		if (kikmhour.isEmpty()) {
-			save("kikmhour", "0");
+			save("kikmhour", "00");
 		} else {
 			kikm1.setText(kikmhour);
 		}
 
-		snapmin = spf.getString("snapmin", "0");
+		snapmin = spf.getString("snapmin", "00");
 		if (snapmin.isEmpty()) {
-			save("snapmin", "0");
+			save("snapmin", "00");
 		} else {
 			snap2.setText(snapmin);
 		}
 
-		snapsec = spf.getString("snapsec", "0");
+		snapsec = spf.getString("snapsec", "00");
 		if (snapsec.isEmpty()) {
-			save("snapsec", "0");
+			save("snapsec", "00");
 		} else {
 			snap3.setText(snapsec);
 		}
 
-		snaphour = spf.getString("snaphour", "0");
+		snaphour = spf.getString("snaphour", "00");
 		if (snaphour.isEmpty()) {
-			save("snaphour", "0");
+			save("snaphour", "00");
 		} else {
 			snap1.setText(snaphour);
 		}
-/////////////////////////////////////////////////
+		// ///////////////////////////////////////////////
 	}
 
 	@Override

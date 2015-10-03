@@ -1,63 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="pidevs.socialsaddict"
-    android:versionCode="17"
-    android:versionName="6.4.2" >
+    android:versionCode="23"
+    android:versionName="6.5.1.4" >
 
     <uses-sdk
-        android:minSdkVersion="9"
-        android:maxSdkVersion="21"
-        android:targetSdkVersion="21" />
+        android:maxSdkVersion="22"
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
 
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat" >
-        
         <activity
-            android:name="pidevs.socialsaddict.MainActivity"
-            android:label="@string/app_name">
+            android:name=".MainActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <receiver android:name=".close" />
-        <receiver android:name=".settinggg" />
-        <receiver android:name=".report" />
-
-        <service
-            android:name="pidevs.socialsaddict.ServiceSocial"
-            android:icon="@drawable/icon"
-            android:label="@string/app_name"
-            android:launchMode="singleTask" >
-        </service>
-   
-    
         <activity
-            android:name="pidevs.socialsaddict.Setting"
+            android:name=".Setting"
+            android:excludeFromRecents="true"
             android:label="@string/title_activity_setting" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pidevs.socialsaddict.MainActivity" />
         </activity>
+        <activity
+            android:name=".Welcome"
+            android:excludeFromRecents="true"
+            android:label="@string/title_activity_welcome"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".About"
+            android:label="@string/title_activity_about"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pidevs.socialsaddict.MainActivity" />
+        </activity>
+
+        <service
+            android:name=".ServiceSocial"
+            android:icon="@drawable/icon"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
+        </service>
+        <service
+            android:name=".LollipopService"
+            android:icon="@drawable/icon"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
+        </service>
 
         <receiver
-            android:name="pidevs.socialsaddict.ServiceStarter"
+            android:name=".ServiceStarter"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
-        
+        <receiver android:name=".close" />
+        <receiver android:name=".settinggg" />
+        <receiver android:name=".report" />
     </application>
-  
 
 </manifest>

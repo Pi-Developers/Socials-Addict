@@ -3,31 +3,75 @@
 
     <string name="app_name">Socials Addict</string>
     <string name="action_settings">Settings</string>
-    <string name="about">
-Socials Addict 
+    <string name="low">Low</string>
+    <string name="hour">00 Hours</string>
+    <string name="use">Usage Rate :</string>
+    <string name="rate">0 Hours/Day</string>
+    <string name="level">Addiction State :</string>
+    <string name="switche">Switch service</string>
+    <string name="toggle">Toggle Tracking service</string>
+    <string name="statsics">Statistics</string>
+    <string name="social">Social-o-meter</string>
+    <string name="total">00 Hours</string>
+    <string name="clear">   Clear options</string>
+    <string name="clear1">   Clear all</string>
+    <string name="MISC">   Misc. options</string>
+    <string name="start">Start service on boot </string>
+    <string name="dailyclear">Clear statistics daily</string>
+    <string name="not"> Hide ongoing notification</string>
+    <string name="enable_disable_service">Enable/Disable Service</string>
+    <string name="title_activity_setting">Setting</string>
+    <string name="a">    About</string>
+    <string name="so">    About Socials Addict</string>
+    <string name="pii">    About Pi developers</string>
+    
+    <string name="about">Socials Addict 
 \nThe Smartest,Fastest and most accurate social networks monitoring app..
-\n\nthis app is open source project made by Pi Developers Team and signed ander GNU public license, you may use the source code of this app for your own use or re-distrubute it but with mentioning the original source
+\n\nthis app is open source project made by Pi Developers Team and signed under GNU public license, you may use the source code of this app for your own use or re-distrubute it but with mentioning the original source
 \n\nCHANGELOG:
-\nV6.4.2:
-\nUX and UI improvements
-\nFull material elements
+\nV6.5:
+\nUX improvements
+\nFull lollipop support (5.0.x , 5.1.x)
 \nBug fixes
-
-
-
-
-
+\nCode improvement
+\n\n
+\nV6.5.1:
+\nAdded "00:00:00" time format
+\nAdded richer notification
+\nAdded 
+\nAdded welcome screen
+\nBug fix for lollipop
+\nBasic Android Marshmallow support
+\n\n
+\nV6.5.1.1:
+\nBugfixes
+\n\n
+\nV6.5.1.2:
+\nBugfixes
+\n\n
+\nV6.5.1.3:
+\nBugfixes
+\n\n
+\nV6.5.1.4:
+\nBugfixes
 </string>
 
-    <string name="enable_disable_service">Enable/Disable Service</string>
-    
-    <string name="title_activity_setting">Setting</string>
-    
-    <string name="pi">
+<string name="pi">
 Pi Developers
 \nCreativity is our middle name.
-\n\nWe are team of young developers trying to indrotude new ideas to android users and make them use the most of their phones.
-\n\nOur goal is to provide same experince on all devices possible, we support all major android versions (3.3.x - 5.x)
+\n\n
+A tech startup -to be- \n
+we are Egyptians, a group of teenagers with vision and mind. we want to make computer (PC, mobile..etc) users usage better and easier by offering new solutions. 
+\n\n- What is our goal ? 		
+\nWe were born to innovate, not to copy others. We follow this slogan as it is the bible, since our launch we have been creating ideas, or refining others, we will not settle for normal when we can reach for the stars.
+\n\n- Our philosophy ?
+\nTo reach the greatest potential with your device and make you -the user- satisfied.by using our solutions, your life will be better.User comes first, all this work is for you, and every person is potentially a user, so you all matter to us.We work for you. 
+\n\n- Why to use our apps ?
+\nBy using our apps, if not for their awesomeness , you are supporting youth to create and show their minds, everyone deserves to think, and that is how we think.
+\n\n- I love your work, How can I support you? 
+\nYou can support us by simply by sharing our work and downloading it, you can donate soon too.
+\n\n- Why do you think you are different ?
+\nWe love what we do, simple.
 \n\nTeam members:
 \n\n-Mohamed Rashad
 \n-Mahmoud Saleh
@@ -38,11 +82,15 @@ Pi Developers
 \n-Mahmoud El-Tarouty
 \n-Mostafa Amr
 \n-Israa Shams
-\n-Robin (AndroidFire)
-\n\n\nCheck our Blog "Pidevelopers.blogspot.com"
-\nOR
-\nFollow us on Twitter @Pi_Developers
+\n-Sahid Almas
+\n-Mohamed El Sayed
+\n-Mohamed Alaa
+\n-Omar Nasser
+\n\n\nCheck our wesbite : Pi-Developers.com
+\nFollow us on Twitter : @Pi_Developers
+\nCheck our blog : blog.pi-developers.com</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_about">About</string>
 
-</string>
-    
 </resources>

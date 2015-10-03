@@ -2,6 +2,7 @@ package pidevs.socialsaddict;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.ColorDrawable;
@@ -21,12 +22,12 @@ import android.widget.Toast;
 public class Setting extends ActionBarActivity {
 
 	CheckBox facebookbox, whatsappbox, instagrambox, twitterbox, askbox,
-			bbmbox, kikbox, tumblrbox,boot,kikmbox,snapchatbox,notbox,clearbox;
+			bbmbox, kikbox, tumblrbox,boot,kikmbox,snapchatbox,notbox,clearbox,richer;
 	
-	Button about, clear, pi, shareapp , website;
+	Button about, clear, shareapp , website;
 	 
 	String fbcheck, whatsappcheck, tumblrcheck, instacheck, twcheck, askcheck,
-			bbmcheck, kikcheck,bootchk,kikmcheck,snapcheck,not,clear1;
+			bbmcheck, kikcheck,bootchk,kikmcheck,snapcheck,not,clear1,rich;
 
     SharedPreferences spfs;
 
@@ -47,7 +48,6 @@ public class Setting extends ActionBarActivity {
 		
 		about = (Button) findViewById(R.id.aboutapp);
 		clear = (Button) findViewById(R.id.clear);
-		pi = (Button) findViewById(R.id.pi);
 
 		facebookbox = (CheckBox) findViewById(R.id.facebookbox);
 		whatsappbox = (CheckBox) findViewById(R.id.whatsappbox);
@@ -62,6 +62,8 @@ public class Setting extends ActionBarActivity {
 		boot = (CheckBox) findViewById(R.id.checkBox1);
 		notbox =  (CheckBox) findViewById(R.id.checkBox2);
 		clearbox =  (CheckBox) findViewById(R.id.checkBox3);
+		richer = (CheckBox) findViewById(R.id.checkBox66);
+		
 		
 		spfs = PreferenceManager.getDefaultSharedPreferences(this);
 		
@@ -78,6 +80,26 @@ public class Setting extends ActionBarActivity {
 
 		load();
 
+		richer.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+
+				if (arg1 == true) {
+					
+					save("rich", "true");
+
+				} else {
+					
+					save("rich", "false");
+
+				}
+
+			}
+		});
+		
+		
+		
 		kikmbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
@@ -291,39 +313,11 @@ public class Setting extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 
-				new AlertDialog.Builder(Setting.this)
-						.setTitle("About")
-						.setMessage(R.string.about)
-						.setPositiveButton(android.R.string.yes,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int which) {
-									}
-								})
-
-						.setIcon(R.drawable.icon).show();
+			startActivity(new Intent(Setting.this , About.class));
 			}
 		});
 
-		pi.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				new AlertDialog.Builder(Setting.this)
-						.setTitle("About Pi")
-						.setMessage(R.string.pi)
-						.setPositiveButton(android.R.string.yes,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int which) {
-									}
-								})
-
-						.setIcon(R.drawable.icon).show();
-			}
-		});
-
+	
 
 		
 
@@ -339,50 +333,50 @@ public class Setting extends ActionBarActivity {
 									public void onClick(DialogInterface dialog, int which) {
 
 
-										save("facebooksec", "0");
-										save("facebookmin", "0");
-										save("facebookhour", "0");
-	
-										save("twittersec", "0");
-										save("twittermin", "0");
-										save("twitterhour", "0");
+										save("facebooksec", "00");
+										save("facebookmin", "00");
+										save("facebookhour", "00");
 
-										save("whatsappsec", "0");
-										save("whatsappmin", "0");
-										save("whatsapphour", "0");
+										save("twittersec", "00");
+										save("twittermin", "00");
+										save("twitterhour", "00");
 
-										save("tumblrsec", "0");
-										save("tumblrmin", "0");
-										save("tumblrhour", "0");
+										save("whatsappsec", "00");
+										save("whatsappmin", "00");
+										save("whatsapphour", "00");
 
-										save("instagramsec", "0");
-										save("instagrammin", "0");
-										save("instagramhour", "0");
-								
-										save("asksec", "0");
-										save("askmin", "0");
-										save("askhour", "0");
+										save("tumblrsec", "00");
+										save("tumblrmin", "00");
+										save("tumblrhour", "00");
 
-										save("bbmsec", "0");
-										save("bbmmin", "0");
-										save("bbmhour", "0");
+										save("instagramsec", "00");
+										save("instagrammin", "00");
+										save("instagramhour", "00");
 
-										save("kiksec", "0");
-										save("kikmin", "0");
-										save("kikhour", "0");
+										save("asksec", "00");
+										save("askmin", "00");
+										save("askhour", "00");
 
-										save("snaphour", "0");
-										save("snapsec", "0");
-										save("snapmin", "0");
-										
-										save("kikmmin", "0");
-										save("kikmsec", "0");
-										save("kikmhour", "0");
-									
-										
-										save("servicesec", "0");
-										save("servicemin", "0");
-										save("servicehour", "0");
+										save("bbmsec", "00");
+										save("bbmmin", "00");
+										save("bbmhour", "00");
+
+										save("kiksec", "00");
+										save("kikmin", "00");
+										save("kikhour", "00");
+
+										save("snaphour", "00");
+										save("snapsec", "00");
+										save("snapmin", "00");
+
+										save("kikmmin", "00");
+										save("kikmsec", "00");
+										save("kikmhour", "00");
+
+										save("servicesec", "00");
+										save("servicemin", "00");
+										save("servicehour", "00");
+
 
 										save("state", "low");
 										save("total", "0");
@@ -438,6 +432,18 @@ public class Setting extends ActionBarActivity {
 			}
 		}	
 
+		
+		rich =  spfs.getString("rich" , "false");
+
+		if (rich.isEmpty()) {
+
+		} else {
+			if (rich.equals("true")) {
+				richer.setChecked(true);
+			} else {
+				richer.setChecked(false);
+			}
+		}	
 		
 		
 		clear1 = spfs.getString("clear", "false");
