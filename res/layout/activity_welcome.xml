@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:gravity="center"
+        android:text="Welcome to Socials Addict !"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#01579b" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:fillViewport="true" >
+
+    
+    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:src="@drawable/s" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="- Socials Addict is an app desinged to track social networks usage, define the level of addiction and get average rate of usage of the user.\n\n- Socials addict will effectively help you to cut down social networking, and be more productive.\n\n- Socials Addict supports official and most famous unoffical clients of implemented networks.\n\n- Socials Addict is very light-wieght, has no effect on battery at all."
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#01579b" />
+
+            <TextView
+                android:id="@+id/textView686"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="_________________________________"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#01579b" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="\n- Addiction level takes 4 hours to start working for the first time.\n\n- Usage rate takes 24 hours to start for the first time."
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#01579b" />
+
+            <TextView
+                android:id="@+id/rdsrde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="_________________________________"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#01579b" />
+
+            <TextView
+                android:id="@+id/textView68f6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="\n- You can share all you stats with friends everywhere by share options in menu.\n\n- You can choose your favorite sites only to track, to get more accurate stats."
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#01579b" />
+
+            <TextView
+                android:id="@+id/rdgsrde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="_________________________________"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#01579b" />
+
+            <TextView
+                android:id="@+id/texgtView68f6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_weight="1.0"
+                android:text="\n  Enjoy using our humble app, and have a nice day !"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#01579b" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Let&apos;s give it a shot !" />
+
+</LinearLayout>

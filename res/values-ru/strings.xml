@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">социальные сети наркоман</string>
+    <string name="action_settings">настройки</string>
+    <string name="low">низкий</string>
+    <string name="hour">00 часов</string>
+    <string name="use">Usage Rate :</string>
+    <string name="rate">0 Hours/Day</string>
+    <string name="level">Addiction State :</string>
+    <string name="switche">Switch service</string>
+    <string name="toggle">Toggle Tracking service</string>
+    <string name="statsics">Statistics</string>
+    <string name="social">Social-o-meter</string>
+    <string name="total">00 Hours</string>
+    <string name="clear">   Clear options</string>
+    <string name="clear1">   Clear all</string>
+    <string name="MISC">   Misc. options</string>
+    <string name="start">Start service on boot </string>
+    <string name="dailyclear">Clear statistics daily</string>
+   <string name="not"> Hide ongoing notification</string>
+    <string name="enable_disable_service">Enable/Disable Service</string>
+    <string name="title_activity_setting">Setting</string>
+     <string name="a">    About</string>
+     <string name="so">    About Socials Addict</string>
+     <string name="pii">    About Pi developers</string>
+    <string name="about">Socials Addict 
+\nThe Smartest,Fastest and most accurate social networks monitoring app..
+\n\nthis app is open source project made by Pi Developers Team and signed ander GNU public license, you may use the source code of this app for your own use or re-distrubute it but with mentioning the original source
+\n\nCHANGELOG:
+\nV6.4.2:
+\nUX and UI improvements
+\nFull material elements
+\nBug fixes</string>
+    <string name="pi">Pi Developers
+\nCreativity is our middle name.
+\n\nWe are team of young developers trying to indrotude new ideas to android users and make them use the most of their phones.
+\n\nOur goal is to provide same experince on all devices possible, we support all major android versions (3.3.x - 5.x)
+\n\nTeam members:
+\n\n-Mohamed Rashad
+\n-Mahmoud Saleh
+\n-Ahmad Sameh
+\n-Mostafa Samy
+\n-Mohamed Ashraf
+\n-Yassmin Gouda
+\n-Mahmoud El-Tarouty
+\n-Mostafa Amr
+\n-Israa Shams
+\n-Robin (AndroidFire)
+\n\n\nCheck our Blog "Pidevelopers.blogspot.com"
+\nOR
+\nFollow us on Twitter @Pi_Developers</string>
+
+</resources>
