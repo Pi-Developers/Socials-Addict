@@ -41,6 +41,7 @@ Socials-Addict
 
 >>12-Stop tracking from notifications (Jellybean and later)
 
+This App was features on XDA Developers' portal 2 Times and more websites too.
 
 
 **Downloads :**     
